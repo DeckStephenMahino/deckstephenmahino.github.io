@@ -1,498 +1,1239 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DECKode | Data & Analytics Portfolio</title>
-    <!-- Google Fonts: Editorial Serif + Clean Sans Serif -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
+    <title>DECKode | Data Analytics & Intelligence</title>
+    <meta name="description" content="DECKode — Data analytics, business intelligence, and data-driven insights by Deck Stephen Mahino.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* --- BRAND IDENTITY SYSTEM (McKinsey-Inspired) --- */
+        /* =========================
+           1. GLOBAL STYLES
+        ========================= */
+
         :root {
-            --mck-deep-blue: #002244;
-            --mck-electric-blue: #005A9C;
-            --mck-bg-light: #F4F6F9;
-            --mck-text-dark: #121212;
-            --mck-text-muted: #565656;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --transition: all 0.3s ease;
+            --navy: #092642;
+            --blue: #1769AA;
+            --blue-light: #EAF2F8;
+            --green: #77A88D;
+            --dark: #17212B;
+            --muted: #657383;
+            --light: #F5F7F9;
+            --white: #FFFFFF;
+            --border: #E1E6EB;
+
+            --serif: 'Playfair Display', Georgia, serif;
+            --sans: 'DM Sans', Arial, sans-serif;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
         }
 
         body {
-            font-family: var(--font-sans);
-            color: var(--mck-text-dark);
-            background-color: #ffffff;
-            line-height: 1.6;
+            font-family: var(--sans);
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* --- UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
         a {
-            text-decoration: none;
             color: inherit;
-            transition: var(--transition);
+            text-decoration: none;
         }
 
-        /* --- HEADER / NAVIGATION --- */
+        .container {
+            width: min(1160px, 90%);
+            margin: auto;
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(30px, 4vw, 43px);
+            font-weight: 500;
+            line-height: 1.25;
+            color: var(--navy);
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 650px;
+            margin-top: 15px;
+            font-size: 15px;
+        }
+
+        /* =========================
+           2. NAVIGATION
+        ========================= */
+
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #e0e0e0;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
+            z-index: 100;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
         }
 
-        .nav-container {
+        .navbar {
+            min-height: 76px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
         }
 
         .logo {
-            font-family: var(--font-serif);
-            font-size: 1.7rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--mck-deep-blue);
+            font-family: var(--serif);
+            font-size: 27px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -1px;
         }
 
         .logo span {
-            color: var(--mck-electric-blue);
+            color: var(--blue);
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
+            align-items: center;
             gap: 32px;
+            list-style: none;
         }
 
         .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--mck-text-dark);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark);
+            transition: 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--mck-electric-blue);
+            color: var(--blue);
         }
 
-        .cta-btn {
-            background-color: var(--mck-deep-blue);
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid var(--mck-deep-blue);
+        .nav-contact {
+            padding: 10px 19px;
+            background: var(--navy);
+            color: white !important;
         }
 
-        .cta-btn:hover {
-            background-color: transparent;
-            color: var(--mck-deep-blue);
+        .nav-contact:hover {
+            background: var(--blue);
         }
 
-        /* --- HERO SECTION --- */
+        /* =========================
+           3. HERO SECTION
+        ========================= */
+
         .hero {
-            padding: 180px 0 100px 0;
-            background-color: #ffffff;
+            padding: 105px 0 100px;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 65px;
             align-items: center;
-        }
-
-        .hero-tag {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--mck-electric-blue);
-            font-weight: 700;
-            margin-bottom: 16px;
-            display: inline-block;
         }
 
         .hero h1 {
-            font-family: var(--font-serif);
-            font-size: 3.8rem;
-            line-height: 1.15;
-            color: var(--mck-deep-blue);
+            font-family: var(--serif);
+            font-size: clamp(42px, 5.4vw, 68px);
+            font-weight: 500;
+            color: var(--navy);
+            line-height: 1.13;
+            letter-spacing: -1.5px;
             margin-bottom: 24px;
-            font-weight: 400;
         }
 
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--mck-text-muted);
-            margin-bottom: 40px;
-            max-width: 600px;
+        .hero h1 span {
+            color: var(--blue);
         }
 
-        /* McKinsey Graphic/Asymmetric Placeholder Element */
-        .hero-visual {
-            background: linear-gradient(135deg, var(--mck-deep-blue) 0%, #004080 100%);
-            height: 450px;
-            position: relative;
+        .hero-text {
+            max-width: 580px;
+            font-size: 16px;
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.15);
-            font-family: var(--font-serif);
-            font-size: 8rem;
-            font-weight: 900;
-            overflow: hidden;
-            border-left: 6px solid var(--mck-electric-blue);
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
-        .hero-visual::before {
+        .btn {
+            display: inline-block;
+            padding: 13px 23px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.25s;
+            border: 1px solid var(--navy);
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            color: var(--navy);
+        }
+
+        .btn-outline:hover {
+            background: var(--blue-light);
+        }
+
+        /* Hero visual */
+
+        .hero-visual {
+            min-height: 390px;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+            padding: 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .visual-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #A9C4DC;
+        }
+
+        .visual-heading {
+            font-family: var(--serif);
+            font-size: 36px;
+            line-height: 1.3;
+            max-width: 300px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .visual-bottom {
+            font-size: 12px;
+            color: #B9C9D8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .visual-circle {
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 50%;
+            right: -65px;
+            top: 55px;
+        }
+
+        .visual-circle::before,
+        .visual-circle::after {
             content: "";
             position: absolute;
-            width: 150%;
-            height: 150%;
-            border: 1px solid rgba(255,255,255,0.05);
-            transform: rotate(45deg);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
         }
 
-        /* --- DATA IMPACT / EXECUTIVE METRICS --- */
-        .metrics-bar {
-            background-color: var(--mck-deep-blue);
-            color: #ffffff;
-            padding: 60px 0;
+        .visual-circle::before {
+            inset: 30px;
         }
 
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            text-align: center;
+        .visual-circle::after {
+            inset: 65px;
         }
 
-        .metric-item h3 {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            color: #ffffff;
-            margin-bottom: 8px;
-            font-weight: 300;
+        .visual-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--green);
+            border-radius: 50%;
+            top: 110px;
+            right: 100px;
         }
 
-        .metric-item p {
-            font-size: 0.9rem;
-            color: #b0c4de;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* =========================
+           4. INTRODUCTION STRIP
+        ========================= */
+
+        .intro-strip {
+            background: var(--light);
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* --- FEATURED INSIGHTS (PROJECTS) --- */
-        .projects {
-            padding: 100px 0;
-            background-color: var(--mck-bg-light);
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-            border-bottom: 1px solid #dcdcdc;
-            padding-bottom: 20px;
+        .intro-inner {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
-        .section-header h2 {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--mck-deep-blue);
-            font-weight: 400;
+        .intro-item {
+            flex: 1;
+            min-width: 150px;
         }
 
-        .project-large {
+        .intro-item strong {
+            display: block;
+            color: var(--navy);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .intro-item span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           5. FEATURED PROJECT
+        ========================= */
+
+        .projects {
+            padding: 105px 0;
+            background: white;
+        }
+
+        .section-heading {
+            margin-bottom: 48px;
+        }
+
+        .featured-project {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            background: #ffffff;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            background: white;
         }
 
-        .project-large-img {
-            background-color: #ddd;
-            min-height: 350px;
-            background-image: linear-gradient(rgba(0,34,68,0.85), rgba(0,34,68,0.95));
+        .project-visual {
+            min-height: 400px;
+            background: var(--navy);
+            padding: 35px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            color: #fff;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-large-content {
-            padding: 50px;
+        .project-visual::after {
+            content: "";
+            position: absolute;
+            width: 290px;
+            height: 290px;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 50%;
+            right: -90px;
+            bottom: -100px;
+        }
+
+        .project-visual-label {
+            color: #A9C4DC;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .project-visual h3 {
+            font-family: var(--serif);
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 1.3;
+            max-width: 320px;
+            z-index: 1;
+        }
+
+        .project-visual p {
+            font-size: 12px;
+            color: #B9C9D8;
+            z-index: 1;
+        }
+
+        .project-content {
+            padding: 48px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .project-tech {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--mck-electric-blue);
-            text-transform: uppercase;
+        .project-category {
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 800;
             letter-spacing: 1.5px;
-            margin-bottom: 12px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
         }
 
-        .project-title {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--mck-deep-blue);
-            margin-bottom: 16px;
-            font-weight: 400;
+        .project-content h3 {
+            font-family: var(--serif);
+            font-size: 29px;
+            line-height: 1.3;
+            color: var(--navy);
+            font-weight: 500;
+            margin-bottom: 17px;
         }
 
-        .project-desc {
-            color: var(--mck-text-muted);
-            margin-bottom: 24px;
-            font-size: 0.95rem;
+        .project-content > p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 22px;
         }
 
-        .read-more {
-            font-weight: 600;
-            color: var(--mck-deep-blue);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+        .project-details {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            margin-top: 5px;
         }
 
-        .read-more:hover {
-            color: var(--mck-electric-blue);
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 8px 0;
+            font-size: 12px;
         }
 
-        /* Project Sub-Grid */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+        .detail-row span:first-child {
+            color: var(--muted);
         }
 
-        .project-card {
-            background: #ffffff;
-            padding: 40px;
-            border-top: 3px solid var(--mck-deep-blue);
-            transition: var(--transition);
+        .detail-row span:last-child {
+            color: var(--navy);
+            font-weight: 700;
+            text-align: right;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        .project-award {
+            margin-top: 20px;
+            padding: 14px;
+            background: var(--blue-light);
+            border-left: 3px solid var(--green);
+            font-size: 12px;
+            color: var(--navy);
         }
 
-        /* --- CORE CAPABILITIES (SKILLS) --- */
+        /* =========================
+           6. CAPABILITIES
+        ========================= */
+
         .capabilities {
             padding: 100px 0;
-            background: #ffffff;
+            background: var(--light);
         }
 
-        .caps-grid {
+        .capability-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 25px;
+            margin-top: 50px;
         }
 
-        .cap-item {
-            border-left: 1px solid #e0e0e0;
-            padding-left: 20px;
-            padding-top: 10px;
+        .capability-card {
+            padding: 28px 22px;
+            background: white;
+            border-top: 3px solid var(--navy);
+            transition: 0.25s;
         }
 
-        .cap-num {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--mck-electric-blue);
-            margin-bottom: 16px;
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(9,38,66,0.07);
         }
 
-        .cap-item h4 {
-            font-size: 1.1rem;
-            color: var(--mck-deep-blue);
+        .capability-number {
+            color: var(--blue);
+            font-family: var(--serif);
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .capability-card h3 {
+            color: var(--navy);
+            font-size: 16px;
             margin-bottom: 12px;
-            font-weight: 600;
         }
 
-        .cap-item p {
-            font-size: 0.88rem;
-            color: var(--mck-text-muted);
+        .capability-card p {
+            color: var(--muted);
+            font-size: 13px;
         }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--mck-deep-blue);
-            color: #ffffff;
-            padding: 80px 0 40px 0;
-            border-top: 5px solid var(--mck-electric-blue);
+        /* =========================
+           7. ABOUT SECTION
+        ========================= */
+
+        .about {
+            padding: 105px 0;
         }
 
-        .footer-grid {
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 85px;
+            align-items: start;
+        }
+
+        .about-side {
+            border-left: 4px solid var(--blue);
+            padding: 20px 25px;
+            background: var(--light);
+        }
+
+        .about-side h3 {
+            font-family: var(--serif);
+            font-size: 25px;
+            color: var(--navy);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .about-side p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .about-main h2 {
+            font-family: var(--serif);
+            font-size: 36px;
+            font-weight: 500;
+            color: var(--navy);
+            line-height: 1.3;
+            margin-bottom: 22px;
+        }
+
+        .about-main p {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 17px;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .tag {
+            background: var(--blue-light);
+            color: var(--navy);
+            padding: 8px 13px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           8. CONTACT SECTION
+        ========================= */
+
+        .contact {
+            padding: 90px 0;
+            background: var(--navy);
+            color: white;
+        }
+
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 60px;
+            gap: 50px;
+            align-items: center;
         }
 
-        .footer-left h2 {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
+        .contact .eyebrow {
+            color: #9CC3E1;
+        }
+
+        .contact h2 {
+            font-family: var(--serif);
+            font-size: clamp(35px, 4vw, 48px);
             font-weight: 400;
+            line-height: 1.25;
             margin-bottom: 20px;
         }
 
-        .footer-right {
+        .contact-description {
+            font-size: 14px;
+            color: #C0CFDC;
+            max-width: 480px;
+        }
+
+        .contact-links {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-          align-items: flex-start;
+            gap: 17px;
         }
-        .footer-email {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            border-bottom: 2px solid #ffffff;
-            padding-bottom: 8px;
-            margin-bottom: 24px;
-        }    
-        .footer-email:hover {
-            color: #b0c4de;
-            border-color: #b0c4de;
+
+        .contact-link {
+            padding: 17px 20px;
+            border: 1px solid rgba(255,255,255,0.25);
+            font-size: 14px;
+            transition: 0.2s;
         }
-        .footer-meta {
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        .contact-link small {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #9CC3E1;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           9. FOOTER
+        ========================= */
+
+        footer {
+            background: #061B30;
+            padding: 24px 0;
+            color: #AABBCB;
+        }
+
+        .footer-inner {
             display: flex;
             justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-            font-size: 0.8rem;
-            color: #b0c4de;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
-/* --- RESPONSIVE DESIGN --- */
-@media (max-width: 992px) {
-.hero-grid, .project-large, .project-grid, .footer-grid {
-grid-template-columns: 1fr;
-}
-.hero h1 { font-size: 2.8rem; }
-.caps-grid { grid-template-columns: repeat(2, 1fr); }
-.hero-visual { height: 300px; }
-}
-@media (max-width: 600px) {
-.metrics-grid, .caps-grid { grid-template-columns: 1fr; }
-.nav-links { display: none; }
-}
+
+        .footer-inner p {
+            font-size: 11px;
+        }
+
+        .footer-brand {
+            font-family: var(--serif);
+            font-size: 18px;
+            color: white;
+        }
+
+        /* =========================
+           10. MOBILE RESPONSIVENESS
+        ========================= */
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr 0.8fr;
+                gap: 30px;
+            }
+
+            .capability-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 35px;
+            }
+
+            .project-content {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .navbar {
+                min-height: 68px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .nav-links {
+                gap: 13px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .nav-links li:nth-child(2),
+            .nav-links li:nth-child(3) {
+                display: none;
+            }
+
+            .nav-contact {
+                padding: 8px 11px;
+            }
+
+            .hero {
+                padding: 65px 0;
+            }
+
+            .hero-grid,
+            .featured-project,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                min-height: 280px;
+            }
+
+            .visual-heading {
+                font-size: 30px;
+            }
+
+            .intro-inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .projects,
+            .capabilities,
+            .about {
+                padding: 70px 0;
+            }
+
+            .project-visual {
+                min-height: 290px;
+            }
+
+            .project-visual h3 {
+                font-size: 32px;
+            }
+
+            .project-content {
+                padding: 27px 22px;
+            }
+
+            .capability-grid {
+                gap: 14px;
+            }
+
+            .capability-card {
+                padding: 22px 16px;
+            }
+
+            .about-main h2 {
+                font-size: 30px;
+            }
+
+            .contact {
+                padding: 70px 0;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header>
+        <div class="container navbar">
+
+            <a href="#home" class="logo">
+                DECK<span>ode</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#capabilities">Capabilities</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact" class="nav-contact">Connect</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
 
 
-DECKode
+    <!-- HERO -->
+
+    <main>
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+
+            <div>
+                <div class="eyebrow">
+                    Data Analytics & Business Intelligence
+                </div>
+
+                <h1>
+                    Turning data into <span>meaningful decisions.</span>
+                </h1>
+
+                <p class="hero-text">
+                    I combine analytical thinking, technical
+                    problem-solving, and data visualization to
+                    transform complex information into meaningful
+                    insights and actionable recommendations.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        Explore Projects
+                    </a>
+
+                    <a href="#about" class="btn btn-outline">
+                        About Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+
+                <div class="visual-label">
+                    DECKode / Analytical Perspective
+                </div>
+
+                <div class="visual-circle"></div>
+                <div class="visual-dot"></div>
+
+                <div class="visual-heading">
+                    Clarity through data.
+                </div>
+
+                <div class="visual-bottom">
+                    ANALYZE. INTERPRET. RECOMMEND.
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
 
-Case Insights
-Capabilities
-About
+    <!-- INTRODUCTION -->
+
+    <section class="intro-strip">
+        <div class="container intro-inner">
+
+            <div class="intro-item">
+                <strong>Data Analytics</strong>
+                <span>Exploration & Interpretation</span>
+            </div>
+
+            <div class="intro-item">
+                <strong>Business Intelligence</strong>
+                <span>Reporting & Visualization</span>
+            </div>
+
+            <div class="intro-item">
+                <strong>Data Modeling</strong>
+                <span>Structure & Transformation</span>
+            </div>
+
+            <div class="intro-item">
+                <strong>Engineering</strong>
+                <span>Technical Problem-Solving</span>
+            </div>
+
+        </div>
+    </section>
 
 
-Connect
+    <!-- PROJECTS -->
 
-Data Strategy & Intelligence
-Turning complex data assets into clear strategic pathways.
-I analyze systemic enterprise metrics, design predictive architectures, and translate raw pipeline ecosystems into high-conviction leadership decisions.
-Explore Case Studies
+    <section class="projects" id="projects">
+        <div class="container">
 
+            <div class="section-heading">
+                <div class="eyebrow">Selected Work</div>
 
-</>
+                <h2 class="section-title">
+                    Featured Data Insights
+                </h2>
 
-
-40%
-Pipeline Latency Reduction
-
-
-$1.2M
-Attributed Revenue Growth
-
-
-500+ Hrs
-Manual Reporting Automated
+                <p class="section-description">
+                    An exploration of how structured data,
+                    analytical methods, and visualization can
+                    communicate complex issues and support
+                    evidence-based decisions.
+                </p>
+            </div>
 
 
-Featured Data Insights
-Analytical Frameworks
-Python / SQL / Tableau
-Consumer Retention Vector Optimization
-Engineered an end-to-end churn prediction framework analyzing millions of transactional rows. Transformed predictive probabilities into actionable marketing levers, directly flattening seasonal attrition curves.
-Read full brief ↗
+            <div class="featured-project">
 
-AWS / Apache Spark
-Scalable ETL Pipeline Architecture
-Architected distributed computing routines to parse non-relational real-time event logs, stabilizing weekly analytical throughput volumes.
-Review architecture ↗
+                <div class="project-visual">
 
+                    <div class="project-visual-label">
+                        Featured Case Study / 01
+                    </div>
 
-PowerBI / DAX / R
-Supply Chain Anomaly Diagnostic Engine
-Modeled internal freight delay points using historic delivery indices, allowing procurement managers to proactively shift inventory channels.
-View dashboard framework ↗
+                    <h3>
+                        Global Energy Progress Monitor
+                    </h3>
 
+                    <p>
+                        Sustainable Development Goal 7
+                        / Affordable & Clean Energy
+                    </p>
 
-
-Core Analytical Capabilities
-Technical Domains
+                </div>
 
 
+                <div class="project-content">
 
-01
-Statistical Modeling
-Rigorous regression, multivariate hypothesis isolation, and predictive clustering architectures.
+                    <div class="project-category">
+                        Power BI / Data Analytics
+                    </div>
+
+                    <h3>
+                        Measuring Global Progress Toward
+                        Affordable and Clean Energy
+                    </h3>
+
+                    <p>
+                        An analytical dashboard examining
+                        global progress toward SDG 7 through
+                        key energy indicators, including
+                        electricity access, renewable energy,
+                        energy efficiency, and clean energy
+                        investment.
+                    </p>
+
+                    <div class="project-details">
+
+                        <div class="detail-row">
+                            <span>Platform</span>
+                            <span>Microsoft Power BI</span>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Tools</span>
+                            <span>Power Query / DAX</span>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Data Period</span>
+                            <span>2000–2022</span>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Focus</span>
+                            <span>UN Sustainable Development Goal 7</span>
+                        </div>
+
+                    </div>
+
+                    <div class="project-award">
+                        <strong>Recognition:</strong>
+                        Outstanding Dashboard Project –
+                        Emerging Analytics Talent
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
 
-02
-Data Engineering
-Designing performant relational databases, optimizing query costs, and structuring clean schemas.
+    <!-- CAPABILITIES -->
+
+    <section class="capabilities" id="capabilities">
+
+        <div class="container">
+
+            <div class="eyebrow">What I Bring</div>
+
+            <h2 class="section-title">
+                Core Analytical Capabilities
+            </h2>
+
+            <p class="section-description">
+                Combining data tools, analytical techniques,
+                and technical foundations to develop
+                meaningful insights.
+            </p>
 
 
-03
-BI Visualizations
-Drafting executive dashboards built for clear information hierarchy and macro trend discovery.
+            <div class="capability-grid">
+
+                <div class="capability-card">
+                    <div class="capability-number">01</div>
+
+                    <h3>Data Preparation</h3>
+
+                    <p>
+                        Data cleaning, transformation,
+                        integration, and preparation
+                        for reliable analysis.
+                    </p>
+                </div>
 
 
-04
-Business Translation
-Bridging deep engineering codebases directly into high-level C-Suite operational priorities.
+                <div class="capability-card">
+                    <div class="capability-number">02</div>
+
+                    <h3>Data Modeling</h3>
+
+                    <p>
+                        Structuring datasets, developing
+                        relationships, and building
+                        analytical data models.
+                    </p>
+                </div>
 
 
+                <div class="capability-card">
+                    <div class="capability-number">03</div>
 
-Let's build actionable intelligence.
-Available for consulting contracts, systemic data diagnostic sprints, and full-time senior analytics partnerships.
+                    <h3>Business Intelligence</h3>
+
+                    <p>
+                        Developing interactive reports,
+                        visualizations, and analytical
+                        solutions using Power BI.
+                    </p>
+                </div>
 
 
-hello@deckode.com
-Connect across developer platforms:
-GitHub
-LinkedIn
+                <div class="capability-card">
+                    <div class="capability-number">04</div>
+
+                    <h3>Insight Generation</h3>
+
+                    <p>
+                        Interpreting trends, identifying
+                        patterns, and communicating
+                        data-driven recommendations.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="container about-grid">
+
+            <div class="about-side">
+
+                <div class="eyebrow">Professional Background</div>
+
+                <h3>
+                    Engineering meets analytics.
+                </h3>
+
+                <p>
+                    A technical foundation combined with
+                    an analytical approach to solving
+                    problems and understanding data.
+                </p>
+
+            </div>
 
 
-© 2026 DECKode. All rights reserved.
-Designed with executive structural frameworksS
+            <div class="about-main">
+
+                <div class="eyebrow">About Me</div>
+
+                <h2>
+                    Bringing technical thinking
+                    into the world of data.
+                </h2>
+
+                <p>
+                    I am an Electronics Engineer with
+                    professional experience as a Systems
+                    Engineer in the semiconductor industry
+                    and a growing specialization in
+                    Data Analytics.
+                </p>
+
+                <p>
+                    My technical background has shaped
+                    my approach to problem-solving,
+                    structured analysis, and understanding
+                    complex systems. I am expanding
+                    these foundations through data
+                    preparation, modeling, visualization,
+                    and analytical interpretation.
+                </p>
+
+                <p>
+                    My focus is not simply presenting
+                    numbers, but understanding what the
+                    data reveals and translating those
+                    findings into meaningful insights
+                    and actionable recommendations.
+                </p>
+
+                <div class="about-tags">
+
+                    <span class="tag">Electronics Engineering</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Power Query</span>
+                    <span class="tag">DAX</span>
+                    <span class="tag">Data Visualization</span>
+                    <span class="tag">Data Analysis</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="container contact-grid">
+
+            <div>
+
+                <div class="eyebrow">Let's Connect</div>
+
+                <h2>
+                    Let's turn information
+                    into insight.
+                </h2>
+
+                <p class="contact-description">
+                    Interested in data analytics,
+                    business intelligence, or potential
+                    professional opportunities?
+                    I'd be glad to connect.
+                </p>
+
+            </div>
+
+
+            <div class="contact-links">
+
+                <!-- Replace with your actual email -->
+                <a class="contact-link"
+                   href="kcedstevem@gmail.com">
+
+                    <small>Email</small>
+                    Get in touch
+                </a>
+
+
+                <!-- Replace with your LinkedIn profile URL -->
+                <a class="contact-link"
+                   href="www.linkedin.com/in/dsc-mahino"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    <small>Professional Network</small>
+                    LinkedIn
+                </a>
+
+
+                <a class="contact-link"
+                   href="https://github.com/DeckStephenMahino"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    <small>Development & Projects</small>
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container footer-inner">
+
+            <div class="footer-brand">
+                DECKode
+            </div>
+
+            <p>
+                © 2026 DECKode. All rights reserved.
+            </p>
+
+            <p>
+                Designed with purpose. Driven by insight.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
