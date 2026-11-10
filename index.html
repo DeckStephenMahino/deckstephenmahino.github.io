@@ -136,14 +136,27 @@
             color: var(--blue);
         }
 
-        .nav-contact {
-            padding: 10px 19px;
-            background: var(--navy);
-            color: white !important;
+        
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark);
+            padding: 10px 14px;
+            transition: 0.25s;
         }
 
-        .nav-contact:hover {
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-links a.active {
+            background: var(--navy);
+            color: white;
+        }
+
+        .nav-links a.active:hover {
             background: var(--blue);
+            color: white;
         }
 
         /* =========================
@@ -694,8 +707,8 @@
                 font-size: 11px;
             }
 
-            .nav-links li:nth-child(2),
-            .nav-links li:nth-child(3) {
+            .nav-links li:nth-child(3),
+            .nav-links li:nth-child(4) {
                 display: none;
             }
 
@@ -797,10 +810,11 @@
 
             <nav>
                 <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#capabilities">Capabilities</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#contact" class="nav-contact">Connect</a></li>
+                    <li><a href="#contact">Connect</a></li>
                 </ul>
             </nav>
 
@@ -1224,6 +1238,41 @@
         </div>
 
     </footer>
+    
+    <script>
+        const sections = document.querySelectorAll(
+            '#home, #projects, #capabilities, #about, #contact'
+        );
+
+        const navLinks = document.querySelectorAll(
+            '.nav-links a'
+        );
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+
+                    const activeLink = document.querySelector(
+                        `.nav-links a[href="#${entry.target.id}"]`
+                    );
+
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, {
+            rootMargin: '-90px 0px -55% 0px',
+            threshold: 0
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 
 </body>
 </html>
