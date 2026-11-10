@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECKode | Data & Analytics Portfolio</title>
+    <!-- Google Fonts: Editorial Serif + Clean Sans Serif -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- BRAND IDENTITY SYSTEM (McKinsey-Inspired) --- */
+        :root {
+            --mck-deep-blue: #002244;
+            --mck-electric-blue: #005A9C;
+            --mck-bg-light: #F4F6F9;
+            --mck-text-dark: #121212;
+            --mck-text-muted: #565656;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--mck-text-dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- HEADER / NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--mck-deep-blue);
+        }
+
+        .logo span {
+            color: var(--mck-electric-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--mck-text-dark);
+        }
+
+        .nav-links a:hover {
+            color: var(--mck-electric-blue);
+        }
+
+        .cta-btn {
+            background-color: var(--mck-deep-blue);
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--mck-deep-blue);
+        }
+
+        .cta-btn:hover {
+            background-color: transparent;
+            color: var(--mck-deep-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 180px 0 100px 0;
+            background-color: #ffffff;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--mck-electric-blue);
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3.8rem;
+            line-height: 1.15;
+            color: var(--mck-deep-blue);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--mck-text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* McKinsey Graphic/Asymmetric Placeholder Element */
+        .hero-visual {
+            background: linear-gradient(135deg, var(--mck-deep-blue) 0%, #004080 100%);
+            height: 450px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.15);
+            font-family: var(--font-serif);
+            font-size: 8rem;
+            font-weight: 900;
+            overflow: hidden;
+            border-left: 6px solid var(--mck-electric-blue);
+        }
+
+        .hero-visual::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            border: 1px solid rgba(255,255,255,0.05);
+            transform: rotate(45deg);
+        }
+
+        /* --- DATA IMPACT / EXECUTIVE METRICS --- */
+        .metrics-bar {
+            background-color: var(--mck-deep-blue);
+            color: #ffffff;
+            padding: 60px 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .metric-item h3 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        .metric-item p {
+            font-size: 0.9rem;
+            color: #b0c4de;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- FEATURED INSIGHTS (PROJECTS) --- */
+        .projects {
+            padding: 100px 0;
+            background-color: var(--mck-bg-light);
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--mck-deep-blue);
+            font-weight: 400;
+        }
+
+        .project-large {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #ffffff;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .project-large-img {
+            background-color: #ddd;
+            min-height: 350px;
+            background-image: linear-gradient(rgba(0,34,68,0.85), rgba(0,34,68,0.95));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: #fff;
+        }
+
+        .project-large-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-tech {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--mck-electric-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--mck-deep-blue);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .project-desc {
+            color: var(--mck-text-muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            font-weight: 600;
+            color: var(--mck-deep-blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .read-more:hover {
+            color: var(--mck-electric-blue);
+        }
+
+        /* Project Sub-Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            padding: 40px;
+            border-top: 3px solid var(--mck-deep-blue);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* --- CORE CAPABILITIES (SKILLS) --- */
+        .capabilities {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .caps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .cap-item {
+            border-left: 1px solid #e0e0e0;
+            padding-left: 20px;
+            padding-top: 10px;
+        }
+
+        .cap-num {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--mck-electric-blue);
+            margin-bottom: 16px;
+        }
+
+        .cap-item h4 {
+            font-size: 1.1rem;
+            color: var(--mck-deep-blue);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .cap-item p {
+            font-size: 0.88rem;
+            color: var(--mck-text-muted);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--mck-deep-blue);
+            color: #ffffff;
+            padding: 80px 0 40px 0;
+            border-top: 5px solid var(--mck-electric-blue);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-left h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          align-items: flex-start;
+        }
+        .footer-email {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+        }    
+        .footer-email:hover {
+            color: #b0c4de;
+            border-color: #b0c4de;
+        }
+        .footer-meta {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            font-size: 0.8rem;
+            color: #b0c4de;
+        }
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+.hero-grid, .project-large, .project-grid, .footer-grid {
+grid-template-columns: 1fr;
+}
+.hero h1 { font-size: 2.8rem; }
+.caps-grid { grid-template-columns: repeat(2, 1fr); }
+.hero-visual { height: 300px; }
+}
+@media (max-width: 600px) {
+.metrics-grid, .caps-grid { grid-template-columns: 1fr; }
+.nav-links { display: none; }
+}
+
+
+DECKode
+
+
+Case Insights
+Capabilities
+About
+
+
+Connect
+
+Data Strategy & Intelligence
+Turning complex data assets into clear strategic pathways.
+I analyze systemic enterprise metrics, design predictive architectures, and translate raw pipeline ecosystems into high-conviction leadership decisions.
+Explore Case Studies
+
+
+</>
+
+
+40%
+Pipeline Latency Reduction
+
+
+$1.2M
+Attributed Revenue Growth
+
+
+500+ Hrs
+Manual Reporting Automated
+
+
+Featured Data Insights
+Analytical Frameworks
+Python / SQL / Tableau
+Consumer Retention Vector Optimization
+Engineered an end-to-end churn prediction framework analyzing millions of transactional rows. Transformed predictive probabilities into actionable marketing levers, directly flattening seasonal attrition curves.
+Read full brief ↗
+
+AWS / Apache Spark
+Scalable ETL Pipeline Architecture
+Architected distributed computing routines to parse non-relational real-time event logs, stabilizing weekly analytical throughput volumes.
+Review architecture ↗
+
+
+PowerBI / DAX / R
+Supply Chain Anomaly Diagnostic Engine
+Modeled internal freight delay points using historic delivery indices, allowing procurement managers to proactively shift inventory channels.
+View dashboard framework ↗
+
+
+
+Core Analytical Capabilities
+Technical Domains
+
+
+
+01
+Statistical Modeling
+Rigorous regression, multivariate hypothesis isolation, and predictive clustering architectures.
+
+
+02
+Data Engineering
+Designing performant relational databases, optimizing query costs, and structuring clean schemas.
+
+
+03
+BI Visualizations
+Drafting executive dashboards built for clear information hierarchy and macro trend discovery.
+
+
+04
+Business Translation
+Bridging deep engineering codebases directly into high-level C-Suite operational priorities.
+
+
+
+Let's build actionable intelligence.
+Available for consulting contracts, systemic data diagnostic sprints, and full-time senior analytics partnerships.
+
+
+hello@deckode.com
+Connect across developer platforms:
+GitHub
+LinkedIn
+
+
+
+
+© 2026 DECKode. All rights reserved.
+Designed with executive structural frameworksS
