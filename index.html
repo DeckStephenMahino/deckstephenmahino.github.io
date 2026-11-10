@@ -175,7 +175,7 @@
         }
 
         .hero h1 {
-            margin-top: 40px;
+            margin-top: 20px;
             font-family: var(--serif);
             font-size: clamp(42px, 5.4vw, 68px);
             font-weight: 500;
@@ -202,7 +202,7 @@
         }
 
         .hero-name {
-            margin-top: 75px;
+            margin-top: 45px;
             font-family: var(--sans);
             font-size: 15px;
             font-weight: 700;
@@ -696,128 +696,358 @@
            10. MOBILE RESPONSIVENESS
         ========================= */
 
-        @media (max-width: 900px) {
+        
+        /* =========================
+           10. RESPONSIVE DESIGN
+        ========================= */
+        
+        /* TABLETS AND SMALL LAPTOPS */
+        @media (max-width: 1024px) {
+        
+            .container {
+                width: 92%;
+            }
+        
+            .nav-links {
+                gap: 12px;
+            }
+        
+            .nav-links a {
+                padding: 9px 10px;
+                font-size: 12px;
+            }
+        
             .hero-grid {
-                grid-template-columns: 1fr 0.8fr;
-                gap: 30px;
-            }
-
-            .capability-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-grid {
+                grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
                 gap: 35px;
             }
-
+        
+            .hero h1 {
+                font-size: clamp(38px, 5vw, 54px);
+            }
+        
+            .hero-visual {
+                min-height: 340px;
+                padding: 28px;
+            }
+        
+            .visual-heading {
+                font-size: 31px;
+            }
+        
+            .featured-project {
+                grid-template-columns: 1fr 1fr;
+            }
+        
             .project-content {
                 padding: 30px;
             }
+        
+            .project-content h3 {
+                font-size: 25px;
+            }
+        
+            .capability-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        
+            .about-grid {
+                gap: 40px;
+            }
         }
-
-        @media (max-width: 680px) {
+        
+        
+        /* TABLETS AND NARROW SCREENS */
+        @media (max-width: 760px) {
+        
+            html {
+                scroll-padding-top: 115px;
+            }
+        
             .navbar {
-                min-height: 68px;
+                min-height: auto;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                flex-direction: column;
+                gap: 10px;
             }
-
+        
             .logo {
-                font-size: 24px;
+                font-size: 25px;
             }
-
+        
+            nav {
+                width: 100%;
+            }
+        
             .nav-links {
-                gap: 13px;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 5px;
             }
-
+        
             .nav-links a {
+                display: block;
+                padding: 7px 10px;
                 font-size: 11px;
             }
-
-            .nav-links li:nth-child(3),
-            .nav-links li:nth-child(4) {
-                display: none;
-            }
-
-            .nav-contact {
-                padding: 8px 11px;
-            }
-
+        
             .hero {
-                padding: 65px 0;
+                padding: 50px 0 65px;
             }
-
-            .hero-grid,
-            .featured-project,
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
+        
+            .hero-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 40px;
             }
-
+        
+            .hero h1 {
+                margin-top: 20px;
+                font-size: clamp(36px, 7vw, 48px);
+                margin-bottom: 18px;
+            }
+        
+            .hero-text {
+                font-size: 15px;
+            }
+        
             .hero-visual {
-                min-height: 280px;
+                min-height: 300px;
             }
-
+        
             .visual-heading {
-                font-size: 30px;
+                font-size: 32px;
             }
-
+        
             .intro-inner {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 25px;
             }
-
+        
+            .intro-item {
+                min-width: 0;
+            }
+        
             .projects,
             .capabilities,
             .about {
-                padding: 70px 0;
+                padding: 75px 0;
             }
-
+        
+            .featured-project {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        
             .project-visual {
-                min-height: 290px;
+                min-height: 300px;
             }
-
-            .project-visual h3 {
+        
+            .project-content {
+                padding: 30px 25px;
+            }
+        
+            .capability-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px;
+            }
+        
+            .about-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 30px;
+            }
+        
+            .about-main h2 {
                 font-size: 32px;
             }
-
-            .project-content {
-                padding: 27px 22px;
-            }
-
-            .capability-grid {
-                gap: 14px;
-            }
-
-            .capability-card {
-                padding: 22px 16px;
-            }
-
-            .about-main h2 {
-                font-size: 30px;
-            }
-
+        
             .contact {
                 padding: 70px 0;
             }
-
+        
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 35px;
+            }
+        
             .footer-inner {
+                justify-content: center;
+                text-align: center;
                 flex-direction: column;
-                align-items: flex-start;
             }
         }
-
-        @media (max-width: 380px) {
-            .nav-links {
-                gap: 8px;
+        
+        
+        /* MOBILE PHONES */
+        @media (max-width: 480px) {
+        
+            .container {
+                width: 90%;
             }
-
+        
+            .hero {
+                padding: 40px 0 55px;
+            }
+        
+            .hero h1 {
+                font-size: clamp(32px, 8vw, 40px);
+                letter-spacing: -1px;
+            }
+        
+            .hero-name {
+                font-size: 13px;
+                letter-spacing: 1.5px;
+            }
+        
+            .hero-role {
+                font-size: 11px;
+            }
+        
+            .hero-buttons {
+                gap: 10px;
+                margin-top: 28px;
+            }
+        
+            .btn {
+                padding: 12px 16px;
+                font-size: 12px;
+            }
+        
+            .hero-visual {
+                min-height: 260px;
+                padding: 25px;
+            }
+        
+            .visual-heading {
+                font-size: 28px;
+            }
+        
+            .intro-strip {
+                padding: 28px 0;
+            }
+        
+            .intro-inner {
+                gap: 20px 12px;
+            }
+        
+            .intro-item strong {
+                font-size: 12px;
+            }
+        
+            .intro-item span {
+                font-size: 11px;
+            }
+        
+            .projects,
+            .capabilities,
+            .about {
+                padding: 60px 0;
+            }
+        
+            .section-title {
+                font-size: 30px;
+            }
+        
+            .section-description {
+                font-size: 13px;
+            }
+        
+            .section-heading {
+                margin-bottom: 30px;
+            }
+        
+            .project-visual {
+                min-height: 260px;
+                padding: 25px;
+            }
+        
+            .project-visual h3 {
+                font-size: 29px;
+            }
+        
+            .project-content {
+                padding: 25px 20px;
+            }
+        
+            .project-content h3 {
+                font-size: 24px;
+            }
+        
+            .project-content > p {
+                font-size: 13px;
+            }
+        
+            .detail-row {
+                font-size: 11px;
+                flex-wrap: wrap;
+            }
+        
+            .detail-row span:last-child {
+                max-width: 65%;
+            }
+        
+            .project-award {
+                font-size: 11px;
+            }
+        
+            .capability-card {
+                padding: 20px 15px;
+            }
+        
+            .capability-card h3 {
+                font-size: 14px;
+            }
+        
+            .capability-card p {
+                font-size: 12px;
+            }
+        
+            .about-main h2 {
+                font-size: 29px;
+            }
+        
+            .about-main p {
+                font-size: 13px;
+            }
+        
+            .tag {
+                font-size: 10px;
+                padding: 7px 10px;
+            }
+        
+            .contact h2 {
+                font-size: 34px;
+            }
+        }
+        
+        
+        /* VERY SMALL PHONES */
+        @media (max-width: 360px) {
+        
+            .nav-links {
+                gap: 2px;
+            }
+        
             .nav-links a {
+                padding: 7px 8px;
                 font-size: 10px;
             }
-
+        
             .capability-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
+            }
+        
+            .detail-row {
+                flex-direction: column;
+                gap: 2px;
+            }
+        
+            .detail-row span:last-child {
+                max-width: 100%;
+                text-align: left;
             }
         }
+
 
     </style>
 </head>
