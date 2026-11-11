@@ -387,22 +387,28 @@
             align-items: stretch;
         }
 
-       .project-visual {
+     
+        .project-visual {
             min-height: 0;
             padding: 0;
             background: transparent;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
         
         .project-visual::after {
             display: none;
         }
         
+        /* Main dashboard image */
         .project-visual a {
             display: block;
             cursor: zoom-in;
+            overflow: hidden;
         }
-
+        
         .project-dashboard-image {
             display: block;
             width: 100%;
@@ -412,9 +418,40 @@
             transition: transform 0.3s ease;
         }
         
-        .project-visual a:hover .project-dashboard-image {
-            transform: scale(1.02);
+        /* Supporting screenshots */
+        .project-supporting-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
         }
+        
+        .project-supporting-item {
+            display: block;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        
+        .project-supporting-item img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-supporting-item span {
+            display: block;
+            padding-top: 7px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        /* Hover zoom */
+        .project-visual a:hover img {
+            transform: scale(1.04);
+        }
+
         .project-content {
             padding: 20px;
             display: flex;
@@ -1183,19 +1220,52 @@
             <div class="featured-project">
 
             <div class="project-visual">
-
+            
+                <!-- MAIN DASHBOARD OVERVIEW -->
                 <a href="projects/global-energy-dashboard.png"
                    target="_blank"
                    rel="noopener noreferrer"
                    aria-label="View full-size Global Energy Progress Monitor dashboard">
             
                     <img src="projects/global-energy-dashboard.png"
-                         alt="Global Energy Progress Monitor dashboard"
+                         alt="Global Energy Progress Monitor dashboard overview"
                          class="project-dashboard-image">
             
                 </a>
             
+                <!-- SUPPORTING TECHNICAL SCREENSHOTS -->
+                <div class="project-supporting-grid">
+            
+                    <a href="projects/data-model.png"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="project-supporting-item"
+                       aria-label="View full-size Power BI data model">
+            
+                        <img src="projects/data-model.png"
+                             alt="Power BI data model showing fact and dimension tables">
+            
+                        <span>DATA MODEL</span>
+            
+                    </a>
+            
+                    <a href="projects/power-query.png"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="project-supporting-item"
+                       aria-label="View full-size Power Query data preparation">
+            
+                        <img src="projects/power-query.png"
+                             alt="Power Query data preparation and transformation">
+            
+                        <span>DATA PREPARATION</span>
+            
+                    </a>
+            
+                </div>
+            
             </div>
+
 
 
                 <div class="project-content">
