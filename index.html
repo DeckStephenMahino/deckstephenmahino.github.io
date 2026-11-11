@@ -495,6 +495,31 @@
             font-size: 12px;
             color: var(--navy);
         }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 28px;
+            padding-bottom: 6px;
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--navy);
+            transition: all 0.3s ease;
+        }
+        
+        .project-link span {
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--blue);
+            border-color: var(--blue);
+        }
+        
+        .project-link:hover span {
+            transform: translateX(5px);
+        }
 
         /* =========================
            6. CAPABILITIES
