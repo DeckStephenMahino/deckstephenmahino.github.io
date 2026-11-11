@@ -398,14 +398,23 @@
             display: none;
         }
         
+        .project-visual a {
+            display: block;
+            cursor: zoom-in;
+        }
+
         .project-dashboard-image {
             display: block;
             width: 100%;
             height: auto;
             aspect-ratio: 16 / 9;
             object-fit: contain;
+            transition: transform 0.3s ease;
         }
         
+        .project-visual a:hover .project-dashboard-image {
+            transform: scale(1.02);
+        }
         .project-content {
             padding: 20px;
             display: flex;
@@ -1173,13 +1182,20 @@
 
             <div class="featured-project">
 
-               <div class="project-visual">
+            <div class="project-visual">
 
+                <a href="projects/global-energy-dashboard.png"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="View full-size Global Energy Progress Monitor dashboard">
+            
                     <img src="projects/global-energy-dashboard.png"
                          alt="Global Energy Progress Monitor dashboard"
                          class="project-dashboard-image">
-                
-                </div>
+            
+                </a>
+            
+            </div>
 
 
                 <div class="project-content">
