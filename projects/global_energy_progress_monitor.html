@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Global Energy Progress Monitor | DECKode</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --mck-deep-blue: #002244;
+            --mck-electric-blue: #005A9C;
+            --mck-bg-light: #F4F6F9;
+            --mck-text-dark: #121212;
+            --mck-text-muted: #565656;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--mck-text-dark);
+            background: #fff;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,.96);
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -.5px;
+            color: var(--mck-deep-blue);
+        }
+
+        .logo span {
+            color: var(--mck-electric-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: .9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--mck-electric-blue);
+        }
+
+        .nav-cta {
+            background: var(--mck-deep-blue);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 3px;
+        }
+
+        .nav-cta:hover {
+            background: var(--mck-electric-blue);
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 85px 0;
+        }
+
+        .eyebrow {
+            color: var(--mck-electric-blue);
+            font-size: .76rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--mck-deep-blue);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .section-intro {
+            max-width: 720px;
+            color: var(--mck-text-muted);
+            margin-bottom: 38px;
+        }
+
+        /* HERO */
+
+        .project-hero {
+            padding: 145px 0 65px;
+            background: var(--mck-bg-light);
+        }
+
+        .breadcrumb {
+            font-size: .83rem;
+            color: var(--mck-text-muted);
+            margin-bottom: 30px;
+        }
+
+        .breadcrumb a {
+            color: var(--mck-electric-blue);
+        }
+
+        .project-label {
+            display: inline-block;
+            background: #e5edf5;
+            color: var(--mck-deep-blue);
+            padding: 7px 13px;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            margin-bottom: 20px;
+        }
+
+        .project-hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.6rem, 6vw, 4.5rem);
+            color: var(--mck-deep-blue);
+            line-height: 1.12;
+            max-width: 850px;
+            margin-bottom: 18px;
+        }
+
+        .project-subtitle {
+            color: var(--mck-electric-blue);
+            font-size: .88rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            margin-bottom: 22px;
+        }
+
+        .hero-description {
+            max-width: 750px;
+            font-size: 1.04rem;
+            color: var(--mck-text-muted);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .tag {
+            border: 1px solid #d6dfe8;
+            padding: 7px 14px;
+            font-size: .78rem;
+            color: var(--mck-deep-blue);
+            background: white;
+        }
+
+        /* PROJECT INFORMATION */
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid #e4e8ed;
+            margin-top: 45px;
+            background: white;
+        }
+
+        .meta-item {
+            padding: 20px;
+            border-right: 1px solid #e4e8ed;
+        }
+
+        .meta-item:last-child {
+            border-right: none;
+        }
+
+        .meta-label {
+            display: block;
+            color: #777;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .meta-value {
+            color: var(--mck-deep-blue);
+            font-weight: 600;
+            font-size: .9rem;
+        }
+
+        /* IMAGES */
+
+        .image-frame {
+            background: var(--mck-bg-light);
+            border: 1px solid #e2e6eb;
+            overflow: hidden;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .image-caption {
+            color: #777;
+            font-size: .78rem;
+            margin-top: 10px;
+        }
+
+        .dashboard-section {
+            padding-top: 70px;
+        }
+
+        .dashboard-frame {
+            background: #f0f2f5;
+            padding: 12px;
+            border: 1px solid #e2e6eb;
+        }
+
+        .dashboard-frame img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* OVERVIEW */
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 65px;
+            align-items: start;
+        }
+
+        .overview-text p {
+            color: var(--mck-text-muted);
+            margin-bottom: 18px;
+        }
+
+        .objectives {
+            background: var(--mck-bg-light);
+            padding: 30px;
+            border-left: 3px solid var(--mck-electric-blue);
+        }
+
+        .objectives h3 {
+            font-family: var(--font-serif);
+            color: var(--mck-deep-blue);
+            font-size: 1.35rem;
+            margin-bottom: 18px;
+        }
+
+        .objectives ul {
+            padding-left: 20px;
+            color: var(--mck-text-muted);
+        }
+
+        .objectives li {
+            margin-bottom: 12px;
+        }
+
+        /* INDICATORS */
+
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .indicator-card {
+            border: 1px solid #e3e8ed;
+            padding: 25px;
+            background: white;
+        }
+
+        .indicator-number {
+            color: var(--mck-electric-blue);
+            font-size: .78rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .indicator-card h3 {
+            color: var(--mck-deep-blue);
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .indicator-card p {
+            color: var(--mck-text-muted);
+            font-size: .88rem;
+        }
+
+        /* PROCESS */
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+        }
+
+        .process-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--mck-deep-blue);
+            margin: 18px 0 10px;
+        }
+
+        .process-card p {
+            color: var(--mck-text-muted);
+            font-size: .92rem;
+        }
+
+        .process-card .image-frame {
+            margin-bottom: 15px;
+        }
+
+        /* FINDINGS */
+
+        .finding-placeholder {
+            background: var(--mck-bg-light);
+            padding: 35px;
+            border-left: 3px solid var(--mck-electric-blue);
+        }
+
+        .finding-placeholder p {
+            color: var(--mck-text-muted);
+        }
+
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .finding-card {
+            border: 1px solid #e3e8ed;
+            padding: 20px;
+        }
+
+        .finding-card img {
+            width: 100%;
+            margin-bottom: 18px;
+        }
+
+        .finding-card h3 {
+            color: var(--mck-deep-blue);
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .finding-card p {
+            color: var(--mck-text-muted);
+            font-size: .9rem;
+        }
+
+        /* RECOGNITION */
+
+        .recognition-section {
+            background: var(--mck-bg-light);
+        }
+
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .award-card {
+            background: white;
+            border: 1px solid #e1e5e9;
+            padding: 18px;
+        }
+
+        .award-card img {
+            width: 100%;
+            max-height: 370px;
+            object-fit: contain;
+            background: white;
+        }
+
+        .award-card h3 {
+            color: var(--mck-deep-blue);
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            margin-top: 18px;
+        }
+
+        .award-card p {
+            color: var(--mck-text-muted);
+            font-size: .85rem;
+            margin-top: 8px;
+        }
+
+        /* REFLECTION */
+
+        .reflection {
+            max-width: 800px;
+        }
+
+        .reflection p {
+            color: var(--mck-text-muted);
+            margin-bottom: 18px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--mck-deep-blue);
+            color: white;
+            padding: 45px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: #75b6e5;
+        }
+
+        .footer-content p {
+            color: #d1dce7;
+            font-size: .82rem;
+        }
+
+        .back-top {
+            font-size: .85rem;
+            color: white;
+        }
+
+        .back-top:hover {
+            color: #75b6e5;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .meta-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .meta-item:nth-child(-n+2) {
+                border-bottom: 1px solid #e4e8ed;
+            }
+
+            .indicator-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                height: 70px;
+            }
+
+            .nav-links {
+                gap: 13px;
+            }
+
+            .nav-links a {
+                font-size: .75rem;
+            }
+
+            .nav-links li:nth-child(3) {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .project-hero {
+                padding-top: 120px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .indicator-grid,
+            .process-grid,
+            .finding-grid,
+            .recognition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container nav-container">
+        <a href="../index.html#home" class="logo">DECK<span>ode</span></a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact" class="nav-cta">Connect</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+
+    <!-- PROJECT HERO -->
+
+    <section class="project-hero">
+        <div class="container">
+
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> /
+                <a href="../index.html#projects">Projects</a> /
+                Global Energy Progress Monitor
+            </div>
+
+            <span class="project-label">FEATURED CASE STUDY / 01</span>
+
+            <h1>Global Energy<br>Progress Monitor</h1>
+
+            <p class="project-subtitle">
+                SUSTAINABLE DEVELOPMENT GOAL 7 / AFFORDABLE & CLEAN ENERGY
+            </p>
+
+            <p class="hero-description">
+                An analytical Power BI dashboard exploring global progress
+                toward affordable, reliable, sustainable, and modern energy
+                for all. Examining key energy indicators, the project
+                translates complex datasets into meaningful visual insights.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Microsoft Power BI</span>
+                <span class="tag">Power Query</span>
+                <span class="tag">DAX</span>
+                <span class="tag">Data Modeling</span>
+                <span class="tag">Data Visualization</span>
+            </div>
+
+            <div class="project-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Platform</span>
+                    <span class="meta-value">Microsoft Power BI</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">Data Period</span>
+                    <span class="meta-value">2000–2022</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">Focus</span>
+                    <span class="meta-value">UN Sustainable Development Goal 7</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">Recognition</span>
+                    <span class="meta-value">Outstanding Dashboard Project</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DASHBOARD PREVIEW -->
+
+    <section class="dashboard-section">
+        <div class="container">
+
+            <p class="eyebrow">01 / Dashboard Preview</p>
+
+            <h2 class="section-title">A Global View of Energy Progress</h2>
+
+            <p class="section-intro">
+                The dashboard brings together key indicators under
+                Sustainable Development Goal 7, providing an overview
+                of global progress and performance over time.
+            </p>
+
+            <div class="dashboard-frame">
+                <img
+                    src="../assets/images/global-energy-dashboard.png"
+                    alt="Global Energy Progress Monitor Power BI dashboard"
+                >
+            </div>
+
+            <p class="image-caption">
+                Global Energy Progress Monitor – Overview Dashboard
+            </p>
+
+        </div>
+    </section>
+
+    <!-- PROJECT OVERVIEW -->
+
+    <section>
+        <div class="container">
+
+            <div class="overview-grid">
+
+                <div class="overview-text">
+                    <p class="eyebrow">02 / Project Overview</p>
+
+                    <h2 class="section-title">
+                        Understanding the Energy Transition
+                    </h2>
+
+                    <p>
+                        Access to affordable and clean energy remains
+                        an important factor in sustainable development.
+                        Monitoring progress requires examining multiple
+                        indicators across countries and time periods.
+                    </p>
+
+                    <p>
+                        This project consolidates energy-related indicators
+                        into an interactive Power BI dashboard to explore
+                        progress across electricity access, renewable
+                        energy, energy efficiency, and financial support.
+                    </p>
+
+                    <p>
+                        The analysis aims to make complex information
+                        easier to interpret through structured data,
+                        meaningful comparisons, and effective visualization.
+                    </p>
+                </div>
+
+                <div class="objectives">
+                    <h3>Project Objectives</h3>
+
+                    <ul>
+                        <li>Evaluate progress across key SDG 7 indicators.</li>
+                        <li>Explore changes in global energy performance over time.</li>
+                        <li>Examine patterns across countries and indicators.</li>
+                        <li>Communicate findings through meaningful visualizations.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INDICATORS -->
+
+    <section style="background: var(--mck-bg-light);">
+        <div class="container">
+
+            <p class="eyebrow">03 / Analytical Scope</p>
+
+            <h2 class="section-title">What the Dashboard Measures</h2>
+
+            <p class="section-intro">
+                The analysis focuses on five key dimensions of global
+                energy progress.
+            </p>
+
+            <div class="indicator-grid">
+
+                <div class="indicator-card">
+                    <div class="indicator-number">01</div>
+                    <h3>Electricity Access</h3>
+                    <p>Monitoring progress toward universal access to electricity.</p>
+                </div>
+
+                <div class="indicator-card">
+                    <div class="indicator-number">02</div>
+                    <h3>Renewable Energy</h3>
+                    <p>Examining renewable energy implementation and its contribution to total energy consumption.</p>
+                </div>
+
+                <div class="indicator-card">
+                    <div class="indicator-number">03</div>
+                    <h3>Energy Efficiency</h3>
+                    <p>Assessing improvements in energy efficiency over time.</p>
+                </div>
+
+                <div class="indicator-card">
+                    <div class="indicator-number">04</div>
+                    <h3>Financial Support</h3>
+                    <p>Exploring international financial support for clean energy development.</p>
+                </div>
+
+                <div class="indicator-card">
+                    <div class="indicator-number">05</div>
+                    <h3>Renewable Capacity</h3>
+                    <p>Examining installed renewable energy capacity per capita.</p>
+                </div>
+
+                <div class="indicator-card">
+                    <div class="indicator-number">06</div>
+                    <h3>Global Monitoring</h3>
+                    <p>Bringing multiple indicators together to provide a broader perspective on SDG 7.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DATA PROCESS -->
+
+    <section>
+        <div class="container">
+
+            <p class="eyebrow">04 / Behind the Analysis</p>
+
+            <h2 class="section-title">From Raw Data to Structured Insights</h2>
+
+            <p class="section-intro">
+                The project involved preparing, transforming, and organizing
+                datasets before developing the analytical dashboard.
+            </p>
+
+            <div class="process-grid">
+
+                <div class="process-card">
+                    <div class="image-frame">
+                        <img
+                            src="../assets/images/global-energy-data-preparation.png"
+                            alt="Power Query data preparation"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <h3>Data Preparation</h3>
+
+                    <p>
+                        Cleaning, transforming, and preparing source
+                        datasets using Power Query to support consistent
+                        and reliable analysis.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="image-frame">
+                        <img
+                            src="../assets/images/global-energy-data-model.png"
+                            alt="Power BI data model and relationships"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <h3>Data Modeling</h3>
+
+                    <p>
+                        Organizing the analytical dataset using a
+                        star-schema structure, connecting the fact
+                        table with relevant dimension tables.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="image-frame">
+                        <img
+                            src="../assets/images/global-energy-dax.png"
+                            alt="Power BI DAX measures"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <h3>Measure Development</h3>
+
+                    <p>
+                        Developing DAX measures and calculations
+                        to support key performance indicators and
+                        analytical reporting.
+                    </p>
+                </div>
+
+                <div class="process-card">
+                    <div class="image-frame">
+                        <img
+                            src="../assets/images/global-energy-visualization.png"
+                            alt="Power BI dashboard visualizations"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <h3>Data Visualization</h3>
+
+                    <p>
+                        Designing visual elements that communicate
+                        patterns, comparisons, and performance
+                        across energy indicators.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KEY FINDINGS -->
+
+    <section style="background: var(--mck-bg-light);">
+        <div class="container">
+
+            <p class="eyebrow">05 / Analytical Findings</p>
+
+            <h2 class="section-title">Turning Data into Insights</h2>
+
+            <p class="section-intro">
+                Selected visualizations from the dashboard can be used
+                to communicate important findings and their implications.
+            </p>
+
+            <div class="finding-placeholder">
+                <p>
+                    This section will feature evidence-based findings
+                    drawn from the completed analysis. Each finding
+                    should connect a dashboard visualization with
+                    its interpretation and potential implications.
+                </p>
+            </div>
+
+            <!-- Add finding cards after validating the actual analysis -->
+
+            <div class="finding-grid">
+
+                <div class="finding-card">
+                    <img
+                        src="../assets/images/global-energy-finding-01.png"
+                        alt="Selected energy analysis chart"
+                        loading="lazy"
+                    >
+
+                    <h3>Finding 01 – [DATA NEEDED]</h3>
+
+                    <p>
+                        [DATA NEEDED] Describe the actual pattern
+                        demonstrated by this visualization and
+                        explain why it matters.
+                    </p>
+                </div>
+
+                <div class="finding-card">
+                    <img
+                        src="../assets/images/global-energy-finding-02.png"
+                        alt="Selected country or indicator comparison"
+                        loading="lazy"
+                    >
+
+                    <h3>Finding 02 – [DATA NEEDED]</h3>
+
+                    <p>
+                        [DATA NEEDED] Explain the observed comparison
+                        and its implications based on the analysis.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RECOGNITION -->
+
+    <section class="recognition-section">
+        <div class="container">
+
+            <p class="eyebrow">06 / Recognition</p>
+
+            <h2 class="section-title">Recognizing Analytical Excellence</h2>
+
+            <p class="section-intro">
+                Recognition received through the DataSense Analytics
+                Power BI Masterclass and related professional learning.
+            </p>
+
+            <div class="recognition-grid">
+
+                <div class="award-card">
+                    <img
+                        src="../assets/images/global-energy-award.png"
+                        alt="Outstanding Dashboard Project award certificate"
+                        loading="lazy"
+                    >
+
+                    <h3>Outstanding Dashboard Project – Emerging Analytics Talent</h3>
+
+                    <p>
+                        Recognition received for the Global Energy
+                        Progress Monitor project through DataSense Analytics.
+                    </p>
+                </div>
+
+                <div class="award-card">
+                    <img
+                        src="../assets/images/strategic-data-insights-award.png"
+                        alt="Strategic Data Insights Certificate of Excellence"
+                        loading="lazy"
+                    >
+
+                    <h3>Strategic Data Insights</h3>
+
+                    <p>
+                        Certificate of Excellence recognizing achievement
+                        in the Microsoft Power BI Data Analyst Professional Certificate.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECT REFLECTION -->
+
+    <section>
+        <div class="container">
+
+            <div class="reflection">
+
+                <p class="eyebrow">07 / Project Reflection</p>
+
+                <h2 class="section-title">
+                    Building an Analytical Perspective
+                </h2>
+
+                <p>
+                    This project strengthened my understanding of
+                    data preparation, transformation, modeling,
+                    and visualization using Microsoft Power BI.
+                </p>
+
+                <p>
+                    It also reinforced the importance of going beyond
+                    presenting information by interpreting patterns,
+                    understanding context, and communicating findings
+                    that can support informed decisions.
+                </p>
+
+                <p>
+                    The experience further developed my approach to
+                    analytical problem-solving and data storytelling.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+
+        <div>
+            <div class="footer-logo">DECK<span>ode</span></div>
+            <p>Designed with purpose. Driven by insight.</p>
+        </div>
+
+        <a href="../index.html#projects" class="back-top">
+            ← Back to Projects
+        </a>
+
+    </div>
+</footer>
+
+</body>
+</html>
