@@ -541,11 +541,16 @@
             grid-template-columns: 0.85fr 1.15fr;
             gap: 28px;
             align-items: center;
-            margin-top: 35px;
+        
+            /* Position directly below the selected target */
+            width: calc(100% - 74px);
+            margin: 0 0 0 74px;
+        
             padding: 28px;
             background: var(--mck-bg-light);
             border: 1px solid #e3e8ed;
             border-left: 3px solid var(--mck-electric-blue);
+        
             animation: targetFadeIn 0.3s ease;
         }
         
@@ -658,8 +663,10 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
                 padding: 20px;
+            
+                width: calc(100% - 60px);
+                margin-left: 60px;
             }
-        
             .target-detail-image {
                 min-height: 120px;
             }
@@ -2091,34 +2098,33 @@
         
         // ACTIVATE SELECTED TARGET
         
-        function activateTarget(index) {
+         function activateTarget(index) {
         
             const selectedTarget = targetData[index];
+            const selectedItem = targetItems[index];
+        
+            // Move the information card immediately below the selected target
+            selectedItem.insertAdjacentElement("afterend", targetDetail);
         
             // Update target circles and labels
-        
             targetItems.forEach((item, i) => {
                 item.classList.toggle("active", i === index);
                 item.setAttribute("aria-pressed", i === index);
             });
         
             // Highlight the connecting line up to the selected target
-        
-            const selectedItem = targetItems[index];
-
             const progress = Math.max(
                 0,
                 selectedItem.offsetTop +
                 selectedItem.offsetHeight / 2 - 32
             );
-            
+        
             targetList.style.setProperty(
                 "--active-progress",
                 progress + "px"
             );
-                    
-            // Update KPI information
         
+            // Update KPI information
             targetImage.src = selectedTarget.image;
             targetImage.alt = selectedTarget.title;
         
@@ -2127,25 +2133,28 @@
             targetDetailDescription.textContent = selectedTarget.description;
         
             // Display information card
-        
             targetDetail.classList.add("visible");
         }
         
         // CLEAR SELECTED TARGET
         
         function clearTarget() {
-        
-            targetItems.forEach(item => {
-                item.classList.remove("active");
-                item.setAttribute("aria-pressed", "false");
-            });
-        
-            targetList.style.setProperty("--active-progress", "0%");
-        
-            targetDetail.classList.remove("visible");
-        
-            targetImage.src = "";
-        }
+
+        targetItems.forEach(item => {
+            item.classList.remove("active");
+            item.setAttribute("aria-pressed", "false");
+        });
+    
+        // Restore the information card to its original position
+        targetList.insertAdjacentElement("afterend", targetDetail);
+    
+        targetList.style.setProperty("--active-progress", "0%");
+    
+        // Hide the information card
+        targetDetail.classList.remove("visible");
+    
+        targetImage.src = "";
+    }
         
         // HOVER AND CLICK INTERACTIONS
         
