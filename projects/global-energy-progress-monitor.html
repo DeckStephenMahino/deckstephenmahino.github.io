@@ -399,101 +399,280 @@
         
         /* KPI SHOWCASE */
         
-        .kpi-showcase {
+        /* SDG TARGET TIMELINE */
+        
+        .target-explorer {
+            max-width: 850px;
+            margin: 45px auto 0;
+        }
+        
+        .target-list {
+            --active-progress: 0%;
+            position: relative;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 17px;
+            padding: 5px 0;
+        }
+        
+        /* Vertical connecting line */
+        
+        .target-list::before,
+        .target-list::after {
+            content: "";
+            position: absolute;
+            top: 32px;
+            left: 26px;
+            width: 3px;
+            border-radius: 5px;
+        }
+        
+        .target-list::before {
+            bottom: 32px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #dce4ec;
+        }
+        
+        .target-list::after {
+            height: var(--active-progress);
+            background: var(--mck-electric-blue);
+            transition: height 0.35s ease;
+            z-index: 1;
+        }
+        
+        /* Individual target */
+        
+        .target-item {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            min-width: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+        }
+        
+        /* Target circle */
+        
+        .target-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 54px;
+            width: 54px;
+            height: 54px;
+            border: 2px solid #dce4ec;
+            border-radius: 50%;
+            background: white;
+            color: var(--mck-deep-blue);
+            font-size: 0.78rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .target-item:hover .target-circle,
+        .target-item.active .target-circle {
+            transform: scale(1.12);
+            border-color: var(--mck-electric-blue);
+            background: var(--mck-electric-blue);
+            color: white;
+            box-shadow: 0 5px 18px rgba(0, 90, 156, 0.18);
+        }
+        
+        /* Target label */
+        
+        .target-label {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+            flex: 1;
+            padding: 13px 18px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .target-label strong {
+            color: var(--mck-deep-blue);
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        
+        .target-label span {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            color: var(--mck-text-muted);
+            font-size: 0.83rem;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        .target-item:hover .target-label,
+        .target-item.active .target-label {
+            background: #edf4fa;
+            border-color: #dce8f2;
+        }
+        
+        .target-item:hover .target-label span,
+        .target-item.active .target-label span {
+            max-height: 100px;
+            margin-top: 5px;
+            opacity: 1;
+        }
+        
+        .target-item:hover .target-label strong,
+        .target-item.active .target-label strong {
+            color: var(--mck-electric-blue);
+        }
+        
+        /* KPI INFORMATION CARD */
+        
+        .target-detail {
+            display: none;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 28px;
+            align-items: center;
             margin-top: 35px;
+            padding: 28px;
+            background: var(--mck-bg-light);
+            border: 1px solid #e3e8ed;
+            border-left: 3px solid var(--mck-electric-blue);
+            animation: targetFadeIn 0.3s ease;
         }
         
-        .kpi-row {
+        .target-detail.visible {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-            align-items: stretch;
         }
         
-        /* KPI IMAGE */
-        
-        .kpi-image-frame {
+        .target-detail-image {
             display: flex;
             align-items: center;
             justify-content: center;
             min-width: 0;
-            min-height: 280px;
-            padding: 15px;
-            background: white;
-            border: 1px solid #e3e8ed;
+            min-height: 180px;
+            padding: 8px;
             overflow: hidden;
+            background: var(--mck-bg-light);
         }
         
-        .kpi-image-frame img {
+        .target-detail-image img {
             display: block;
             width: 100%;
-            height: 100%;
-            max-height: 350px;
+            max-height: 210px;
             object-fit: contain;
-            transition: transform .35s ease;
+            mix-blend-mode: multiply;
         }
         
-        .kpi-image-frame:hover img {
-            transform: scale(1.025);
-        }
-        
-        /* KPI DESCRIPTION PANEL */
-        
-        .kpi-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 35px 38px;
+        .target-detail-info {
             min-width: 0;
-            background: var(--mck-bg-light);
-            border-left: 3px solid var(--mck-electric-blue);
         }
         
-        .kpi-label {
+        .target-detail-label {
+            display: block;
+            margin-bottom: 10px;
             color: var(--mck-electric-blue);
-            font-size: .75rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-bottom: 13px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
         }
         
-        .kpi-info h3 {
+        .target-detail-info h3 {
+            margin-bottom: 12px;
             color: var(--mck-deep-blue);
             font-family: var(--font-serif);
-            font-size: 1.55rem;
+            font-size: 1.5rem;
             line-height: 1.3;
-            margin-bottom: 14px;
         }
         
-        .kpi-info p {
+        .target-detail-info p {
             color: var(--mck-text-muted);
-            font-size: .9rem;
+            font-size: 0.88rem;
             line-height: 1.8;
         }
         
-        /* KPI RESPONSIVE LAYOUT */
-        
-        @media (max-width: 800px) {
-            .kpi-row {
-                grid-template-columns: 1fr;
-                gap: 0;
+        @keyframes targetFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
             }
-        
-            .kpi-image-frame {
-                min-height: 220px;
-            }
-        
-            .kpi-info {
-                padding: 27px;
-            }
-        
-            .kpi-info h3 {
-                font-size: 1.35rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
+        
+        /* RESPONSIVE TARGET TIMELINE */
+        
+        @media (max-width: 600px) {
+            .target-list {
+                gap: 12px;
+            }
+        
+            .target-item {
+                gap: 12px;
+            }
+        
+            .target-circle {
+                flex-basis: 48px;
+                width: 48px;
+                height: 48px;
+                font-size: 0.72rem;
+            }
+        
+            .target-item:hover .target-circle,
+            .target-item.active .target-circle {
+                flex-basis: 54px;
+                width: 54px;
+                height: 54px;
+            }
+        
+            .target-list::before,
+            .target-list::after {
+                left: 23px;
+            }
+        
+            .target-label {
+                padding: 10px 12px;
+            }
+        
+            .target-label strong {
+                font-size: 0.85rem;
+            }
+        
+            .target-label span {
+                font-size: 0.78rem;
+            }
+        
+            .target-detail,
+            .target-detail.visible {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 20px;
+            }
+        
+            .target-detail-image {
+                min-height: 120px;
+            }
+        
+            .target-detail-image img {
+                max-height: 160px;
+            }
+        
+            .target-detail-info h3 {
+                font-size: 1.3rem;
+            }
+        }
+
 
 
         /* PROCESS */
@@ -1187,11 +1366,8 @@
         </div>
     </section>
 
-    <!-- INDICATORS -->
-
-   
-<!-- INDICATORS -->
-
+    <!-- SDG TARGET TIMELINE -->
+    
     <section style="background: var(--mck-bg-light);">
         <div class="container">
     
@@ -1200,155 +1376,121 @@
             <h2 class="section-title">What the Dashboard Measures</h2>
     
             <p class="section-intro">
-                Five Single Big Number (SBN) key performance indicators (KPIs)
-                representing selected measures aligned with UN SDG 7 Targets
-                7.1, 7.2, 7.3, 7.a, and 7.b.
+                Explore five key performance indicators aligned with
+                the United Nations Sustainable Development Goal 7.
+                Select a target to discover what the dashboard measures.
             </p>
     
-            <div class="kpi-showcase">
+            <div class="target-explorer" id="targetExplorer">
     
-                <!-- KPI 01: ELECTRICITY ACCESS -->
+                <!-- VERTICAL TARGET TIMELINE -->
     
-                <div class="kpi-row">
+                <div class="target-list" id="targetList">
     
-                    <div class="kpi-image-frame">
-                        <img
-                            src="../projects/kpi-1.png"
-                            alt="KPI 01: Electricity Access"
-                            loading="lazy"
-                        >
-                    </div>
+                    <!-- TARGET 7.1 -->
     
-                    <div class="kpi-info">
+                    <button class="target-item" type="button"
+                        data-target="0">
     
-                        <span class="kpi-label">01 / TARGET 7.1</span>
+                        <span class="target-circle">7.1</span>
     
-                        <h3>100% Electricity Access (%)</h3>
+                        <span class="target-label">
+                            <strong>Electricity Access</strong>
+                            <span>
+                                Ensure universal access to affordable,
+                                reliable, and modern energy services.
+                            </span>
+                        </span>
     
-                        <p>
-                            Measures the percentage of countries achieving
-                            universal access to electricity, highlighting
-                            global progress toward reliable and modern
-                            energy access.
-                        </p>
+                    </button>
     
-                    </div>
+                    <!-- TARGET 7.2 -->
     
-                </div>
+                    <button class="target-item" type="button"
+                        data-target="1">
     
+                        <span class="target-circle">7.2</span>
     
-                <!-- KPI 02: RENEWABLE ENERGY -->
+                        <span class="target-label">
+                            <strong>Renewable Energy</strong>
+                            <span>
+                                Increase the share of renewable energy
+                                in the global energy mix.
+                            </span>
+                        </span>
     
-                <div class="kpi-row">
+                    </button>
     
-                    <div class="kpi-image-frame">
-                        <img
-                            src="../projects/kpi-2.png"
-                            alt="KPI 02: Renewable Energy Share"
-                            loading="lazy"
-                        >
-                    </div>
+                    <!-- TARGET 7.3 -->
     
-                    <div class="kpi-info">
+                    <button class="target-item" type="button"
+                        data-target="2">
     
-                        <span class="kpi-label">02 / TARGET 7.2</span>
+                        <span class="target-circle">7.3</span>
     
-                        <h3>At Least 25% Renewable Energy Share (%)</h3>
+                        <span class="target-label">
+                            <strong>Energy Efficiency</strong>
+                            <span>
+                                Improve global energy efficiency
+                                through reductions in energy intensity.
+                            </span>
+                        </span>
     
-                        <p>
-                            Measures the percentage of countries achieving
-                            at least 25% renewable energy in their total
-                            final energy consumption.
-                        </p>
+                    </button>
     
-                    </div>
+                    <!-- TARGET 7.a -->
     
-                </div>
+                    <button class="target-item" type="button"
+                        data-target="3">
     
+                        <span class="target-circle">7.a</span>
     
-                <!-- KPI 03: ENERGY EFFICIENCY -->
+                        <span class="target-label">
+                            <strong>International Financial Flows</strong>
+                            <span>
+                                Strengthen international cooperation
+                                and financial support for clean energy.
+                            </span>
+                        </span>
     
-                <div class="kpi-row">
+                    </button>
     
-                    <div class="kpi-image-frame">
-                        <img
-                            src="../projects/kpi-3.png"
-                            alt="KPI 03: Energy Intensity Reduction"
-                            loading="lazy"
-                        >
-                    </div>
+                    <!-- TARGET 7.b -->
     
-                    <div class="kpi-info">
+                    <button class="target-item" type="button"
+                        data-target="4">
     
-                        <span class="kpi-label">03 / TARGET 7.3</span>
+                        <span class="target-circle">7.b</span>
     
-                        <h3>At Least 2.6% Energy Intensity Reduction (%)</h3>
+                        <span class="target-label">
+                            <strong>Renewable Energy Capacity</strong>
+                            <span>
+                                Expand infrastructure and upgrade
+                                technology for sustainable energy services.
+                            </span>
+                        </span>
     
-                        <p>
-                            Measures the percentage of countries achieving
-                            at least a 2.6% reduction in energy intensity,
-                            reflecting improvements in energy efficiency.
-                        </p>
-    
-                    </div>
-    
-                </div>
-    
-    
-                <!-- KPI 04: INTERNATIONAL FINANCIAL FLOWS -->
-    
-                <div class="kpi-row">
-    
-                    <div class="kpi-image-frame">
-                        <img
-                            src="../projects/kpi-4.png"
-                            alt="KPI 04: International Financial Flows"
-                            loading="lazy"
-                        >
-                    </div>
-    
-                    <div class="kpi-info">
-    
-                        <span class="kpi-label">04 / TARGET 7.a</span>
-    
-                        <h3>International Financial Flows</h3>
-    
-                        <p>
-                            Measures international financial flows
-                            supporting clean energy, providing an overview
-                            of financial support for sustainable energy
-                            development.
-                        </p>
-    
-                    </div>
+                    </button>
     
                 </div>
     
+                <!-- SELECTED TARGET INFORMATION -->
     
-                <!-- KPI 05: RENEWABLE CAPACITY PER CAPITA -->
+                <div class="target-detail" id="targetDetail">
     
-                <div class="kpi-row">
-    
-                    <div class="kpi-image-frame">
-                        <img
-                            src="../projects/kpi-5.png"
-                            alt="KPI 05: Renewable Energy Capacity per Capita"
-                            loading="lazy"
-                        >
+                    <div class="target-detail-image">
+                        <img id="targetImage" src="" alt="">
                     </div>
     
-                    <div class="kpi-info">
+                    <div class="target-detail-info">
     
-                        <span class="kpi-label">05 / TARGET 7.b</span>
+                        <span class="target-detail-label"
+                            id="targetDetailLabel">
+                        </span>
     
-                        <h3>Global Renewable Capacity per Capita</h3>
+                        <h3 id="targetDetailTitle"></h3>
     
-                        <p>
-                            Measures installed renewable electricity
-                            capacity relative to population, allowing
-                            comparisons of renewable energy capacity
-                            across countries.
-                        </p>
+                        <p id="targetDetailDescription"></p>
     
                     </div>
     
@@ -1359,10 +1501,6 @@
         </div>
     </section>
 
-
-    <!-- DATA PROCESS -->
-
-        
     <!-- DATA PROCESS -->
     
     <section id="analysis-process">
@@ -1565,14 +1703,14 @@
                     <button
                         class="process-image-button"
                         type="button"
-                        data-modal-image="../assets/images/global-energy-visualization.png"
+                        data-modal-image="../projects/chart-2.png"
                         data-modal-title="Data Visualization"
                         data-modal-description="Developing visual elements to communicate energy indicators, comparisons, and trends."
                         data-modal-points="Select suitable visualizations for the indicators|Present comparisons and trends|Organize dashboard elements for clear interpretation"
                         aria-label="View data visualization stage"
                     >
                         <img
-                            src="../assets/images/global-energy-visualization.png"
+                            src="../projects/chart-2.png"
                             alt="Power BI dashboard visualizations"
                             loading="lazy"
                         >
@@ -1898,6 +2036,147 @@
                 closeModal();
             }
         });
+        
+        // SDG TARGET TIMELINE INTERACTION
+        
+        const targetExplorer = document.getElementById("targetExplorer");
+        const targetList = document.getElementById("targetList");
+        const targetItems = document.querySelectorAll(".target-item");
+        
+        const targetDetail = document.getElementById("targetDetail");
+        const targetImage = document.getElementById("targetImage");
+        const targetDetailLabel = document.getElementById("targetDetailLabel");
+        const targetDetailTitle = document.getElementById("targetDetailTitle");
+        const targetDetailDescription = document.getElementById("targetDetailDescription");
+        
+        // KPI INFORMATION
+        
+        const targetData = [
+            {
+                label: "TARGET 7.1",
+                title: "100% Electricity Access (%)",
+                image: "../projects/kpi-1.png",
+                description:
+                    "Measures the percentage of countries achieving universal access to electricity, highlighting global progress toward reliable and modern energy access."
+            },
+            {
+                label: "TARGET 7.2",
+                title: "At Least 25% Renewable Energy Share (%)",
+                image: "../projects/kpi-2.png",
+                description:
+                    "Measures the percentage of countries achieving at least 25% renewable energy in their total final energy consumption."
+            },
+            {
+                label: "TARGET 7.3",
+                title: "At Least 2.6% Energy Intensity Reduction (%)",
+                image: "../projects/kpi-3.png",
+                description:
+                    "Measures the percentage of countries achieving at least a 2.6% reduction in energy intensity, reflecting improvements in energy efficiency."
+            },
+            {
+                label: "TARGET 7.a",
+                title: "International Financial Flows",
+                image: "../projects/kpi-4.png",
+                description:
+                    "Measures international financial flows supporting clean energy, providing an overview of financial support for sustainable energy development."
+            },
+            {
+                label: "TARGET 7.b",
+                title: "Global Renewable Capacity per Capita",
+                image: "../projects/kpi-5.png",
+                description:
+                    "Measures installed renewable electricity capacity relative to population, allowing comparisons of renewable energy capacity across countries."
+            }
+        ];
+        
+        // ACTIVATE SELECTED TARGET
+        
+        function activateTarget(index) {
+        
+            const selectedTarget = targetData[index];
+        
+            // Update target circles and labels
+        
+            targetItems.forEach((item, i) => {
+                item.classList.toggle("active", i === index);
+                item.setAttribute("aria-pressed", i === index);
+            });
+        
+            // Highlight the connecting line up to the selected target
+        
+            const selectedItem = targetItems[index];
+
+            const progress = Math.max(
+                0,
+                selectedItem.offsetTop +
+                selectedItem.offsetHeight / 2 - 32
+            );
+            
+            targetList.style.setProperty(
+                "--active-progress",
+                progress + "px"
+            );
+                    
+            // Update KPI information
+        
+            targetImage.src = selectedTarget.image;
+            targetImage.alt = selectedTarget.title;
+        
+            targetDetailLabel.textContent = selectedTarget.label;
+            targetDetailTitle.textContent = selectedTarget.title;
+            targetDetailDescription.textContent = selectedTarget.description;
+        
+            // Display information card
+        
+            targetDetail.classList.add("visible");
+        }
+        
+        // CLEAR SELECTED TARGET
+        
+        function clearTarget() {
+        
+            targetItems.forEach(item => {
+                item.classList.remove("active");
+                item.setAttribute("aria-pressed", "false");
+            });
+        
+            targetList.style.setProperty("--active-progress", "0%");
+        
+            targetDetail.classList.remove("visible");
+        
+            targetImage.src = "";
+        }
+        
+        // HOVER AND CLICK INTERACTIONS
+        
+        targetItems.forEach((item, index) => {
+        
+            item.addEventListener("mouseenter", () => {
+                activateTarget(index);
+            });
+        
+            item.addEventListener("click", () => {
+                activateTarget(index);
+            });
+        
+        });
+        
+        // CLEAR WHEN MOUSE LEAVES THE ENTIRE TARGET SECTION
+        
+        targetExplorer.addEventListener("mouseleave", () => {
+            clearTarget();
+        });
+        
+        // CLEAR WHEN CLICKING OUTSIDE THE TARGET SECTION
+        
+        document.addEventListener("click", event => {
+        
+            if (!targetExplorer.contains(event.target)) {
+                clearTarget();
+            }
+        
+        });
+
     </script>
 
 </body>
