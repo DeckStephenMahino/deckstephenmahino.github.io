@@ -199,7 +199,6 @@
         
         /* PROJECT HERO TWO-COLUMN LAYOUT */
         
-           
         /* HERO BACKGROUND ANIMATION */
         
         .project-hero {
@@ -208,13 +207,20 @@
             overflow: hidden;
         }
         
+        /* Use the content container as the positioning boundary */
+        .project-hero > .container {
+            position: relative;
+        }
+        
+        /* VIDEO POSITION AND SIZE */
         .project-hero-visual {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 58%;
-            height: 100%;
-            z-index: -1;
+            top: 70px;
+            right: 24px;
+            width: 48%;
+            max-width: 560px;
+            height: 360px;
+            z-index: 0;
             pointer-events: none;
             overflow: hidden;
         }
@@ -230,7 +236,12 @@
             background: transparent;
             border: none;
         }
-
+        
+        /* KEEP THE ORIGINAL HERO CONTENT ABOVE THE VIDEO */
+        .project-hero .container > :not(.project-hero-visual) {
+            position: relative;
+            z-index: 1;
+        }
         .project-tags {
             display: flex;
             flex-wrap: wrap;
@@ -805,9 +816,12 @@
 
         /* RESPONSIVE */
         
-        @media (max-width: 850px) {
+       @media (max-width: 850px) {
             .project-hero-visual {
-                width: 65%;
+                width: 55%;
+                height: 300px;
+                top: 100px;
+                right: 24px;
                 opacity: 0.55;
             }
         }
@@ -815,9 +829,13 @@
         @media (max-width: 600px) {
             .project-hero-visual {
                 width: 75%;
+                height: 220px;
+                top: 110px;
+                right: 24px;
                 opacity: 0.35;
             }
         }
+        
         @media (max-width: 800px) {
             .overview-grid {
                 grid-template-columns: 1fr;
