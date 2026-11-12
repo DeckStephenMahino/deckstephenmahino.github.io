@@ -1158,8 +1158,8 @@
                         using Power Query to support consistent analysis.
                     </p>
     
-                    <div class="process-details">
-                        **Key Activities**
+                     <div class="process-details">
+                        <strong>Key Activities</strong>
                         <ul>
                             <li>Transform source data</li>
                             <li>Prepare columns and data types</li>
@@ -1202,7 +1202,7 @@
                     </p>
     
                     <div class="process-details">
-                        **Key Activities**
+                        <strong>Key Activities</strong>
                         <ul>
                             <li>Organize fact and dimension tables</li>
                             <li>Establish table relationships</li>
@@ -1245,7 +1245,7 @@
                     </p>
     
                     <div class="process-details">
-                        **Key Activities**
+                        <strong>Key Activities</strong>
                         <ul>
                             <li>Develop DAX measures</li>
                             <li>Calculate key indicators</li>
@@ -1288,7 +1288,7 @@
                     </p>
     
                     <div class="process-details">
-                        **Key Activities**
+                        <strong>Key Activities</strong>
                         <ul>
                             <li>Select suitable visualizations</li>
                             <li>Present patterns and comparisons</li>
@@ -1332,7 +1332,7 @@
                     </p>
     
                     <div class="process-details">
-                        **What the Dashboard Presents**
+                        <strong>What the Dashboard Presents</strong>
                         <ul>
                             <li>Five key SDG 7 indicators</li>
                             <li>Country-level comparisons</li>
@@ -1349,10 +1349,7 @@
 
     <!-- KEY FINDINGS -->
 
-    
     <!-- PROJECT REFLECTION -->
-
-   <!-- PROJECT REFLECTION -->
 
     <section class="reflection-section">
         <div class="container">
@@ -1517,7 +1514,6 @@
         processCards.forEach((card, index) => {
             card.addEventListener("mouseenter", () => activateProcess(index));
             card.addEventListener("focusin", () => activateProcess(index));
-            card.addEventListener("click", () => activateProcess(index));
         });
     
         // IMAGE MODAL
@@ -1567,10 +1563,17 @@
         function closeModal() {
             imageModal.classList.remove("open");
             imageModal.setAttribute("aria-hidden", "true");
-    
+        
             document.body.style.overflow = "";
             modalImage.src = "";
-    
+        
+            // Remove the active state after closing the preview
+            processCards.forEach(card => {
+                card.classList.remove("active");
+            });
+        
+            processFlow.style.setProperty("--progress", "0%");
+        
             if (previousFocus) {
                 previousFocus.focus();
             }
