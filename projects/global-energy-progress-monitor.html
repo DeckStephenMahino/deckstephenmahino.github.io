@@ -196,7 +196,44 @@
             font-size: 1.04rem;
             color: var(--mck-text-muted);
         }
-
+        
+        /* PROJECT HERO TWO-COLUMN LAYOUT */
+        
+        .project-hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .project-hero-content {
+            min-width: 0;
+        }
+        
+        .project-hero-content h1 {
+            max-width: none;
+        }
+        
+        /* HERO ANIMATION */
+        
+        .project-hero-visual {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-animation {
+            display: block;
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: contain;
+            border: none;
+            background: transparent;
+        }
         .project-tags {
             display: flex;
             flex-wrap: wrap;
@@ -770,7 +807,18 @@
         }
 
         /* RESPONSIVE */
-
+        
+        @media (max-width: 850px) {
+            .project-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        
+            .project-hero-visual {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
         @media (max-width: 800px) {
             .overview-grid {
                 grid-template-columns: 1fr;
@@ -857,30 +905,26 @@
 
     <!-- PROJECT HERO -->
 
-    <section class="project-hero">
-        <div class="container">
+    <div class="project-hero-grid">
 
-            <div class="breadcrumb">
-                <a href="../index.html">Home</a> /
-                <a href="../index.html#projects">Projects</a> /
-                Global Energy Progress Monitor
-            </div>
-
+        <!-- LEFT: PROJECT INTRODUCTION -->
+        <div class="project-hero-content">
+    
             <span class="project-label">FEATURED CASE STUDY / 01</span>
-
+    
             <h1>Global Energy<br>Progress Monitor</h1>
-
+    
             <p class="project-subtitle">
                 SUSTAINABLE DEVELOPMENT GOAL 7: AFFORDABLE AND CLEAN ENERGY
             </p>
-
+    
             <p class="hero-description">
-                An analytical Power BI dashboard exploring global progress toward affordable, 
-                reliable, sustainable, and modern energy for all. 
-                The project examines key energy indicators and translates complex datasets 
+                An analytical Power BI dashboard exploring global progress toward affordable,
+                reliable, sustainable, and modern energy for all.
+                The project examines key energy indicators and translates complex datasets
                 into meaningful visual insights.
             </p>
-
+    
             <div class="project-tags">
                 <span class="tag">Microsoft Power BI</span>
                 <span class="tag">Power Query</span>
@@ -888,6 +932,26 @@
                 <span class="tag">Data Modeling</span>
                 <span class="tag">Data Visualization</span>
             </div>
+    
+        </div>
+    
+        <!-- RIGHT: LOOPING VIDEO -->
+        <div class="project-hero-visual">
+            <video
+                class="hero-animation"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Abstract animated data visualization"
+            >
+                <source src="web-animation.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+    
+    </div>
 
             <div class="project-meta">
                 <div class="meta-item">
