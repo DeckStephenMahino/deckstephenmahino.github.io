@@ -396,6 +396,106 @@
             font-size: .88rem;
         }
 
+        
+        /* KPI SHOWCASE */
+        
+        .kpi-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 35px;
+        }
+        
+        .kpi-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: stretch;
+        }
+        
+        /* KPI IMAGE */
+        
+        .kpi-image-frame {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            min-height: 280px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e3e8ed;
+            overflow: hidden;
+        }
+        
+        .kpi-image-frame img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            transition: transform .35s ease;
+        }
+        
+        .kpi-image-frame:hover img {
+            transform: scale(1.025);
+        }
+        
+        /* KPI DESCRIPTION PANEL */
+        
+        .kpi-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 35px 38px;
+            min-width: 0;
+            background: var(--mck-bg-light);
+            border-left: 3px solid var(--mck-electric-blue);
+        }
+        
+        .kpi-label {
+            color: var(--mck-electric-blue);
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 13px;
+        }
+        
+        .kpi-info h3 {
+            color: var(--mck-deep-blue);
+            font-family: var(--font-serif);
+            font-size: 1.55rem;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+        
+        .kpi-info p {
+            color: var(--mck-text-muted);
+            font-size: .9rem;
+            line-height: 1.8;
+        }
+        
+        /* KPI RESPONSIVE LAYOUT */
+        
+        @media (max-width: 800px) {
+            .kpi-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        
+            .kpi-image-frame {
+                min-height: 220px;
+            }
+        
+            .kpi-info {
+                padding: 27px;
+            }
+        
+            .kpi-info h3 {
+                font-size: 1.35rem;
+            }
+        }
+
+
         /* PROCESS */
         
                 
@@ -1089,59 +1189,176 @@
 
     <!-- INDICATORS -->
 
+   
+<!-- INDICATORS -->
+
     <section style="background: var(--mck-bg-light);">
         <div class="container">
-
+    
             <p class="eyebrow">03 / Analytical Scope</p>
-
+    
             <h2 class="section-title">What the Dashboard Measures</h2>
-
+    
             <p class="section-intro">
-                The five Single Big Number (SBN) KPIs corresponds to
-                the UN SDG 7 Targets 7.1, 7.2, 7.3, 7.4, and 7.5 respectively.
+                Five Single Big Number (SBN) key performance indicators (KPIs)
+                representing selected measures aligned with UN SDG 7 Targets
+                7.1, 7.2, 7.3, 7.a, and 7.b.
             </p>
-
-            <div class="indicator-grid">
-
-                <div class="indicator-card">
-                    <div class="indicator-number">01</div>
-                    <h3>100% Electricity Access (%)</h3>
-                    <p>Measures the percentage of countries with 100% access to electricity.</p>
+    
+            <div class="kpi-showcase">
+    
+                <!-- KPI 01: ELECTRICITY ACCESS -->
+    
+                <div class="kpi-row">
+    
+                    <div class="kpi-image-frame">
+                        <img
+                            src="../projects/kpi-1.png"
+                            alt="KPI 01: Electricity Access"
+                            loading="lazy"
+                        >
+                    </div>
+    
+                    <div class="kpi-info">
+    
+                        <span class="kpi-label">01 / TARGET 7.1</span>
+    
+                        <h3>100% Electricity Access (%)</h3>
+    
+                        <p>
+                            Measures the percentage of countries achieving
+                            universal access to electricity, highlighting
+                            global progress toward reliable and modern
+                            energy access.
+                        </p>
+    
+                    </div>
+    
                 </div>
-
-                <div class="indicator-card">
-                    <div class="indicator-number">02</div>
-                    <h3>At least 25% Renewable Energy Share (%)</h3>
-                    <p>Measures the percentage of countries
-                        with at least 25% renewable energy from 
-                        their total final energy consumption.</p>
+    
+    
+                <!-- KPI 02: RENEWABLE ENERGY -->
+    
+                <div class="kpi-row">
+    
+                    <div class="kpi-image-frame">
+                        <img
+                            src="../projects/kpi-2.png"
+                            alt="KPI 02: Renewable Energy Share"
+                            loading="lazy"
+                        >
+                    </div>
+    
+                    <div class="kpi-info">
+    
+                        <span class="kpi-label">02 / TARGET 7.2</span>
+    
+                        <h3>At Least 25% Renewable Energy Share (%)</h3>
+    
+                        <p>
+                            Measures the percentage of countries achieving
+                            at least 25% renewable energy in their total
+                            final energy consumption.
+                        </p>
+    
+                    </div>
+    
                 </div>
-
-                <div class="indicator-card">
-                    <div class="indicator-number">03</div>
-                    <h3>At least 2.6% Energy Intensity Reduction (%)</h3>
-                    <p>Measures the share of countries
-                        achieving at least 2.6% decrease in their amount 
-                        of energy used per unit of economic output.</p>
+    
+    
+                <!-- KPI 03: ENERGY EFFICIENCY -->
+    
+                <div class="kpi-row">
+    
+                    <div class="kpi-image-frame">
+                        <img
+                            src="../projects/kpi-3.png"
+                            alt="KPI 03: Energy Intensity Reduction"
+                            loading="lazy"
+                        >
+                    </div>
+    
+                    <div class="kpi-info">
+    
+                        <span class="kpi-label">03 / TARGET 7.3</span>
+    
+                        <h3>At Least 2.6% Energy Intensity Reduction (%)</h3>
+    
+                        <p>
+                            Measures the percentage of countries achieving
+                            at least a 2.6% reduction in energy intensity,
+                            reflecting improvements in energy efficiency.
+                        </p>
+    
+                    </div>
+    
                 </div>
-
-                <div class="indicator-card">
-                    <div class="indicator-number">04</div>
-                    <h3>International Financial Flows</h3>
-                    <p>Measures the total International Financial Flows
-                        supporting clean energy.</p>
+    
+    
+                <!-- KPI 04: INTERNATIONAL FINANCIAL FLOWS -->
+    
+                <div class="kpi-row">
+    
+                    <div class="kpi-image-frame">
+                        <img
+                            src="../projects/kpi-4.png"
+                            alt="KPI 04: International Financial Flows"
+                            loading="lazy"
+                        >
+                    </div>
+    
+                    <div class="kpi-info">
+    
+                        <span class="kpi-label">04 / TARGET 7.a</span>
+    
+                        <h3>International Financial Flows</h3>
+    
+                        <p>
+                            Measures international financial flows
+                            supporting clean energy, providing an overview
+                            of financial support for sustainable energy
+                            development.
+                        </p>
+    
+                    </div>
+    
                 </div>
-
-                <div class="indicator-card">
-                    <div class="indicator-number">05</div>
-                    <h3>Global Renewable Capacity per Capita</h3>
-                    <p>Measures the average-by-country installed
-                        renewable electricity capacity relative to population.</p>
+    
+    
+                <!-- KPI 05: RENEWABLE CAPACITY PER CAPITA -->
+    
+                <div class="kpi-row">
+    
+                    <div class="kpi-image-frame">
+                        <img
+                            src="../projects/kpi-5.png"
+                            alt="KPI 05: Renewable Energy Capacity per Capita"
+                            loading="lazy"
+                        >
+                    </div>
+    
+                    <div class="kpi-info">
+    
+                        <span class="kpi-label">05 / TARGET 7.b</span>
+    
+                        <h3>Global Renewable Capacity per Capita</h3>
+    
+                        <p>
+                            Measures installed renewable electricity
+                            capacity relative to population, allowing
+                            comparisons of renewable energy capacity
+                            across countries.
+                        </p>
+    
+                    </div>
+    
                 </div>
-
+    
             </div>
+    
         </div>
     </section>
+
 
     <!-- DATA PROCESS -->
 
