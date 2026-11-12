@@ -452,8 +452,7 @@
             transition: transform .35s ease;
         }
         
-        .process-card:hover .process-image-button img,
-        .process-card.active .process-image-button img {
+       .process-card:hover .process-image-button img {
             transform: scale(1.045);
         }
         
@@ -479,8 +478,7 @@
             animation: fadeIn .25s ease;
         }
         
-        .process-card:hover .process-details,
-        .process-card:focus-within .process-details {
+        .process-card:hover .process-details {
             display: block;
         }
         
@@ -1511,10 +1509,9 @@
             processFlow.style.setProperty("--progress", progress + "%");
         }
     
-        processCards.forEach((card, index) => {
-            card.addEventListener("mouseenter", () => activateProcess(index));
-            card.addEventListener("focusin", () => activateProcess(index));
-        });
+            processCards.forEach((card, index) => {
+                card.addEventListener("mouseenter", () => activateProcess(index));
+            });
     
         // IMAGE MODAL
     
