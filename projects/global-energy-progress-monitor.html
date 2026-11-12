@@ -352,27 +352,246 @@
         }
 
         /* PROCESS */
-
-        .process-grid {
+        
+                
+        /* PROCESS WORKFLOW */
+        
+        .process-flow {
+            --progress: 0%;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 35px;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 18px;
+            position: relative;
+            margin-top: 45px;
         }
-
+        
+        .process-flow::before,
+        .process-flow::after {
+            content: "";
+            position: absolute;
+            top: 19px;
+            left: 7%;
+            height: 3px;
+            z-index: 0;
+        }
+        
+        .process-flow::before {
+            width: 86%;
+            background: #dce4ec;
+        }
+        
+        .process-flow::after {
+            width: var(--progress);
+            max-width: 86%;
+            background: var(--mck-electric-blue);
+            transition: width .35s ease;
+        }
+        
+        .process-card {
+            min-width: 0;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        
+        .process-number {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border: 2px solid #dce4ec;
+            border-radius: 50%;
+            background: white;
+            color: var(--mck-text-muted);
+            font-size: .78rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+        
+        .process-card.active .process-number {
+            background: var(--mck-deep-blue);
+            border-color: var(--mck-deep-blue);
+            color: white;
+        }
+        
+        .process-summary {
+            color: var(--mck-deep-blue);
+            font-size: .82rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .process-image-button,
+        .dashboard-open {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 1px solid #e2e6eb;
+            background: white;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .process-image-button img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: contain;
+            transition: transform .35s ease;
+        }
+        
+        .process-card:hover .process-image-button img,
+        .process-card.active .process-image-button img {
+            transform: scale(1.045);
+        }
+        
         .process-card h3 {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             color: var(--mck-deep-blue);
-            margin: 18px 0 10px;
+            margin: 15px 0 8px;
         }
-
+        
         .process-card p {
             color: var(--mck-text-muted);
-            font-size: .92rem;
+            font-size: .82rem;
         }
-
-        .process-card .image-frame {
-            margin-bottom: 15px;
+        
+        .process-details {
+            display: none;
+            margin-top: 14px;
+            padding: 15px;
+            background: var(--mck-bg-light);
+            border-left: 3px solid var(--mck-electric-blue);
+        }
+        
+        .process-card.active .process-details {
+            display: block;
+        }
+        
+        .process-details ul {
+            padding-left: 18px;
+            margin-top: 8px;
+            color: var(--mck-text-muted);
+            font-size: .8rem;
+        }
+        
+        .process-details li {
+            margin-bottom: 5px;
+        }
+        
+        /* IMAGE MODAL */
+        
+        .image-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            padding: 30px 18px;
+            background: rgba(0, 20, 40, .82);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-modal.open {
+            display: flex;
+        }
+        
+        .image-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 1050px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 25px;
+            background: white;
+        }
+        
+        .image-modal-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            z-index: 2;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--mck-deep-blue);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .image-modal-image {
+            width: 100%;
+            max-height: 62vh;
+            object-fit: contain;
+            clear: both;
+            margin-bottom: 20px;
+        }
+        
+        .image-modal-content h3 {
+            color: var(--mck-deep-blue);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .image-modal-description {
+            color: var(--mck-text-muted);
+            margin-bottom: 18px;
+        }
+        
+        .image-modal-list {
+            padding-left: 20px;
+            color: var(--mck-text-muted);
+        }
+        
+        .image-modal-list li {
+            margin-bottom: 7px;
+        }
+        
+        .dashboard-open {
+            border: none;
+            background: transparent;
+        }
+        
+        .dashboard-open img {
+            width: 100%;
+            height: auto;
+            transition: transform .3s ease;
+        }
+        
+        .dashboard-open:hover img {
+            transform: scale(1.015);
+        }
+        
+        @media (max-width: 1000px) {
+            .process-flow {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                row-gap: 35px;
+            }
+        
+            .process-flow::before,
+            .process-flow::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .process-flow {
+                grid-template-columns: 1fr;
+            }
+        
+            .image-modal-content {
+                padding: 18px;
+            }
         }
 
         /* FINDINGS */
@@ -606,7 +825,7 @@
             <h1>Global Energy<br>Progress Monitor</h1>
 
             <p class="project-subtitle">
-                SUSTAINABLE DEVELOPMENT GOAL 7 / AFFORDABLE AND CLEAN ENERGY
+                SUSTAINABLE DEVELOPMENT GOAL 7: AFFORDABLE AND CLEAN ENERGY
             </p>
 
             <p class="hero-description">
@@ -797,159 +1016,290 @@
 
     <!-- DATA PROCESS -->
 
-    <section>
+        
+    <!-- DATA PROCESS -->
+    
+    <section id="analysis-process">
         <div class="container">
-
+    
             <p class="eyebrow">04 / Behind the Analysis</p>
-
+    
             <h2 class="section-title">From Raw Data to Structured Insights</h2>
-
+    
             <p class="section-intro">
-                The project involved preparing, transforming, and organizing
-                datasets before developing the analytical dashboard.
+                Follow the analytical workflow, from the original datasets
+                through data preparation, modeling, and measure development
+                to the final interactive dashboard. Select each image to
+                view a larger preview and its corresponding activities.
             </p>
-
-            <div class="process-grid">
-
+    
+            <div class="process-flow" id="processFlow">
+    
+                <!-- STEP 01: RAW DATA -->
+    
+                <div class="process-card active">
+    
+                    <div class="process-step">
+                        <span class="process-number">01</span>
+                        <span class="process-summary">Source</span>
+                    </div>
+    
+                    <button
+                        class="process-image-button"
+                        type="button"
+                        data-modal-image="../assets/images/global-energy-raw-data.png"
+                        data-modal-title="Raw Data"
+                        data-modal-description="The original energy-related datasets used as the starting point for the analysis."
+                        data-modal-points="Review the source datasets and available indicators|Identify the relevant fields and reporting periods|Prepare the source data for the next analytical stage"
+                        aria-label="View raw data stage"
+                    >
+                        <img
+                            src="../assets/images/global-energy-raw-data.png"
+                            alt="Original energy dataset"
+                            loading="lazy"
+                        >
+                    </button>
+    
+                    <h3>Raw Data</h3>
+    
+                    <p>
+                        Reviewing the original datasets and identifying
+                        the information relevant to the five SDG 7 indicators.
+                    </p>
+    
+                    <div class="process-details">
+                        **Key Activities**
+                        <ul>
+                            <li>Review source datasets</li>
+                            <li>Identify relevant indicators</li>
+                            <li>Examine available data fields</li>
+                        </ul>
+                    </div>
+    
+                </div>
+    
+                <!-- STEP 02: DATA PREPARATION -->
+    
                 <div class="process-card">
-                    <div class="image-frame">
+    
+                    <div class="process-step">
+                        <span class="process-number">02</span>
+                        <span class="process-summary">Prepare</span>
+                    </div>
+    
+                    <button
+                        class="process-image-button"
+                        type="button"
+                        data-modal-image="../assets/images/global-energy-data-preparation.png"
+                        data-modal-title="Data Preparation"
+                        data-modal-description="Preparing and transforming the source datasets using Power Query."
+                        data-modal-points="Transform source data using Power Query|Prepare relevant columns and data types|Organize the data for analytical use"
+                        aria-label="View data preparation stage"
+                    >
                         <img
                             src="../assets/images/global-energy-data-preparation.png"
                             alt="Power Query data preparation"
                             loading="lazy"
                         >
-                    </div>
-
+                    </button>
+    
                     <h3>Data Preparation</h3>
-
+    
                     <p>
-                        Cleaning, transforming, and preparing source
-                        datasets using Power Query to support consistent
-                        and reliable analysis.
+                        Preparing and transforming source datasets
+                        using Power Query to support consistent analysis.
                     </p>
+    
+                    <div class="process-details">
+                        **Key Activities**
+                        <ul>
+                            <li>Transform source data</li>
+                            <li>Prepare columns and data types</li>
+                            <li>Organize analytical tables</li>
+                        </ul>
+                    </div>
+    
                 </div>
-
+    
+                <!-- STEP 03: DATA MODELING -->
+    
                 <div class="process-card">
-                    <div class="image-frame">
+    
+                    <div class="process-step">
+                        <span class="process-number">03</span>
+                        <span class="process-summary">Structure</span>
+                    </div>
+    
+                    <button
+                        class="process-image-button"
+                        type="button"
+                        data-modal-image="../assets/images/global-energy-data-model.png"
+                        data-modal-title="Data Modeling"
+                        data-modal-description="Structuring the prepared data in Power BI using a star-schema approach."
+                        data-modal-points="Organize the fact and dimension tables|Establish relationships between relevant tables|Create a structure for analysis and reporting"
+                        aria-label="View data modeling stage"
+                    >
                         <img
                             src="../assets/images/global-energy-data-model.png"
                             alt="Power BI data model and relationships"
                             loading="lazy"
                         >
-                    </div>
-
+                    </button>
+    
                     <h3>Data Modeling</h3>
-
+    
                     <p>
                         Organizing the analytical dataset using a
-                        star-schema structure, connecting the fact
-                        table with relevant dimension tables.
+                        star-schema structure and relevant table relationships.
                     </p>
+    
+                    <div class="process-details">
+                        **Key Activities**
+                        <ul>
+                            <li>Organize fact and dimension tables</li>
+                            <li>Establish table relationships</li>
+                            <li>Structure the analytical model</li>
+                        </ul>
+                    </div>
+    
                 </div>
-
+    
+                <!-- STEP 04: MEASURE DEVELOPMENT -->
+    
                 <div class="process-card">
-                    <div class="image-frame">
+    
+                    <div class="process-step">
+                        <span class="process-number">04</span>
+                        <span class="process-summary">Calculate</span>
+                    </div>
+    
+                    <button
+                        class="process-image-button"
+                        type="button"
+                        data-modal-image="../assets/images/global-energy-dax.png"
+                        data-modal-title="Measure Development"
+                        data-modal-description="Developing Data Analysis Expressions (DAX) measures to calculate key indicators and support analytical reporting."
+                        data-modal-points="Develop DAX measures for the dashboard|Calculate key performance indicators|Support indicator comparisons and reporting"
+                        aria-label="View measure development stage"
+                    >
                         <img
                             src="../assets/images/global-energy-dax.png"
                             alt="Power BI DAX measures"
                             loading="lazy"
                         >
-                    </div>
-
+                    </button>
+    
                     <h3>Measure Development</h3>
-
+    
                     <p>
                         Developing DAX measures and calculations
-                        to support key performance indicators and
-                        analytical reporting.
+                        to support key performance indicators and reporting.
                     </p>
+    
+                    <div class="process-details">
+                        **Key Activities**
+                        <ul>
+                            <li>Develop DAX measures</li>
+                            <li>Calculate key indicators</li>
+                            <li>Support analytical reporting</li>
+                        </ul>
+                    </div>
+    
                 </div>
-
+    
+                <!-- STEP 05: DATA VISUALIZATION -->
+    
                 <div class="process-card">
-                    <div class="image-frame">
+    
+                    <div class="process-step">
+                        <span class="process-number">05</span>
+                        <span class="process-summary">Visualize</span>
+                    </div>
+    
+                    <button
+                        class="process-image-button"
+                        type="button"
+                        data-modal-image="../assets/images/global-energy-visualization.png"
+                        data-modal-title="Data Visualization"
+                        data-modal-description="Developing visual elements to communicate energy indicators, comparisons, and trends."
+                        data-modal-points="Select suitable visualizations for the indicators|Present comparisons and trends|Organize dashboard elements for clear interpretation"
+                        aria-label="View data visualization stage"
+                    >
                         <img
                             src="../assets/images/global-energy-visualization.png"
                             alt="Power BI dashboard visualizations"
                             loading="lazy"
                         >
-                    </div>
-
+                    </button>
+    
                     <h3>Data Visualization</h3>
-
+    
                     <p>
-                        Designing visual elements that communicate
-                        patterns, comparisons, and performance
-                        across energy indicators.
+                        Designing visual elements to communicate
+                        patterns, comparisons, and performance across indicators.
                     </p>
+    
+                    <div class="process-details">
+                        **Key Activities**
+                        <ul>
+                            <li>Select suitable visualizations</li>
+                            <li>Present patterns and comparisons</li>
+                            <li>Organize the dashboard layout</li>
+                        </ul>
+                    </div>
+    
                 </div>
-
+    
+                <!-- STEP 06: FINAL DASHBOARD -->
+    
+                <div class="process-card">
+    
+                    <div class="process-step">
+                        <span class="process-number">06</span>
+                        <span class="process-summary">Present</span>
+                    </div>
+    
+                    <button
+                        class="process-image-button"
+                        type="button"
+                        data-modal-image="../projects/global-energy-dashboard.png"
+                        data-modal-title="Global Energy Progress Monitor"
+                        data-modal-heading="Dashboard Insights"
+                        data-modal-description="The completed dashboard overview bringing together five key indicators to examine global progress toward Sustainable Development Goal 7."
+                        data-modal-points="Explore electricity access across countries|Examine renewable energy and energy efficiency indicators|Review international financial flows for clean energy|Compare installed renewable electricity capacity per capita"
+                        aria-label="View final Global Energy Progress Monitor dashboard"
+                    >
+                        <img
+                            src="../projects/global-energy-dashboard.png"
+                            alt="Global Energy Progress Monitor final dashboard"
+                            loading="lazy"
+                        >
+                    </button>
+    
+                    <h3>Dashboard Output</h3>
+    
+                    <p>
+                        Bringing the prepared data, analytical measures,
+                        and visualizations together in the final dashboard.
+                    </p>
+    
+                    <div class="process-details">
+                        **What the Dashboard Presents**
+                        <ul>
+                            <li>Five key SDG 7 indicators</li>
+                            <li>Country-level comparisons</li>
+                            <li>Energy progress over time</li>
+                        </ul>
+                    </div>
+    
+                </div>
+    
             </div>
-
+    
         </div>
     </section>
 
     <!-- KEY FINDINGS -->
-
-    <section style="background: var(--mck-bg-light);">
-        <div class="container">
-
-            <p class="eyebrow">05 / Analytical Findings</p>
-
-            <h2 class="section-title">Turning Data into Insights</h2>
-
-            <p class="section-intro">
-                Selected visualizations from the dashboard can be used
-                to communicate important findings and their implications.
-            </p>
-
-            <div class="finding-placeholder">
-                <p>
-                    This section will feature evidence-based findings
-                    drawn from the completed analysis. Each finding
-                    should connect a dashboard visualization with
-                    its interpretation and potential implications.
-                </p>
-            </div>
-
-            <!-- Add finding cards after validating the actual analysis -->
-
-            <div class="finding-grid">
-
-                <div class="finding-card">
-                    <img
-                        src="../assets/images/global-energy-finding-01.png"
-                        alt="Selected energy analysis chart"
-                        loading="lazy"
-                    >
-
-                    <h3>Finding 01 – [DATA NEEDED]</h3>
-
-                    <p>
-                        [DATA NEEDED] Describe the actual pattern
-                        demonstrated by this visualization and
-                        explain why it matters.
-                    </p>
-                </div>
-
-                <div class="finding-card">
-                    <img
-                        src="../assets/images/global-energy-finding-02.png"
-                        alt="Selected country or indicator comparison"
-                        loading="lazy"
-                    >
-
-                    <h3>Finding 02 – [DATA NEEDED]</h3>
-
-                    <p>
-                        [DATA NEEDED] Explain the observed comparison
-                        and its implications based on the analysis.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
 
     <!-- RECOGNITION -->
 
@@ -1009,7 +1359,7 @@
 
             <div class="reflection">
 
-                <p class="eyebrow">07 / Project Reflection</p>
+                <p class="eyebrow">05 / Project Reflection</p>
 
                 <h2 class="section-title">
                     Building an Analytical Perspective
@@ -1054,6 +1404,152 @@
 
     </div>
 </footer>
+
+    <!-- IMAGE PREVIEW MODAL -->
+    
+    <div
+        class="image-modal"
+        id="imageModal"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+    >
+        <div class="image-modal-content">
+    
+            <button
+                class="image-modal-close"
+                id="closeImageModal"
+                type="button"
+                aria-label="Close image preview"
+            >
+                &times;
+            </button>
+    
+            <img
+                class="image-modal-image"
+                id="modalImage"
+                src=""
+                alt=""
+            >
+    
+            <h3 id="modalTitle"></h3>
+    
+            <p
+                class="image-modal-description"
+                id="modalDescription"
+            ></p>
+    
+            <p class="eyebrow" id="modalPointsHeading">
+                Key Activities
+            </p>
+    
+            <ul class="image-modal-list" id="modalPoints"></ul>
+    
+        </div>
+    </div>
+
+    <!-- PROCESS WORKFLOW AND IMAGE MODAL -->
+    
+    <script>
+        const processCards = document.querySelectorAll(".process-card");
+        const processFlow = document.getElementById("processFlow");
+    
+        function activateProcess(index) {
+            processCards.forEach((card, i) => {
+                card.classList.toggle("active", i === index);
+            });
+    
+            const progress = (index / (processCards.length - 1)) * 86;
+    
+            processFlow.style.setProperty("--progress", progress + "%");
+        }
+    
+        processCards.forEach((card, index) => {
+            card.addEventListener("mouseenter", () => activateProcess(index));
+            card.addEventListener("focusin", () => activateProcess(index));
+            card.addEventListener("click", () => activateProcess(index));
+        });
+    
+        // IMAGE MODAL
+    
+        const imageModal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalPoints = document.getElementById("modalPoints");
+        const modalPointsHeading = document.getElementById("modalPointsHeading");
+        const closeImageModal = document.getElementById("closeImageModal");
+    
+        let previousFocus = null;
+    
+        function openImageModal(button) {
+            previousFocus = document.activeElement;
+    
+            modalImage.src = button.dataset.modalImage;
+            modalImage.alt = button.dataset.modalTitle || "Project image";
+    
+            modalTitle.textContent = button.dataset.modalTitle || "";
+            modalDescription.textContent =
+                button.dataset.modalDescription || "";
+    
+            modalPointsHeading.textContent =
+                button.dataset.modalHeading || "Key Activities";
+    
+            modalPoints.innerHTML = "";
+    
+            const points = (button.dataset.modalPoints || "")
+                .split("|")
+                .filter(point => point.trim() !== "");
+    
+            points.forEach(point => {
+                const li = document.createElement("li");
+                li.textContent = point;
+                modalPoints.appendChild(li);
+            });
+    
+            imageModal.classList.add("open");
+            imageModal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+    
+            closeImageModal.focus();
+        }
+    
+        function closeModal() {
+            imageModal.classList.remove("open");
+            imageModal.setAttribute("aria-hidden", "true");
+    
+            document.body.style.overflow = "";
+            modalImage.src = "";
+    
+            if (previousFocus) {
+                previousFocus.focus();
+            }
+        }
+    
+        document.querySelectorAll("[data-modal-image]").forEach(button => {
+            button.addEventListener("click", () => {
+                openImageModal(button);
+            });
+        });
+    
+        closeImageModal.addEventListener("click", closeModal);
+    
+        imageModal.addEventListener("click", event => {
+            if (event.target === imageModal) {
+                closeModal();
+            }
+        });
+    
+        document.addEventListener("keydown", event => {
+            if (
+                event.key === "Escape" &&
+                imageModal.classList.contains("open")
+            ) {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>
