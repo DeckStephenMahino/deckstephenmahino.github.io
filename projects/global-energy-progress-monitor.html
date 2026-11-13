@@ -1357,54 +1357,147 @@
             margin-top: 8px;
         }
 
+
         /* PROJECT INSIGHTS */
         
         .insights-section {
             background: #fff;
         }
         
-        .insights-panel {
-            position: relative;
-            overflow: hidden;
-            margin-top: 35px;
-            padding: 25px 38px;
-            background: var(--mck-deep-blue);
-            color: white;
-        }
+               
+        <div class="insights-panel">
         
-        .insights-panel::after {
-            content: "";
-            position: absolute;
-            right: -65px;
-            bottom: -100px;
-            width: 240px;
-            height: 240px;
-            border: 1px solid rgba(255,255,255,.10);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 25px rgba(255,255,255,.025),
-                0 0 0 50px rgba(255,255,255,.02);
-            pointer-events: none;
-        }
+            <!-- INSIGHT 01 -->
+        
+            <div class="insight-item">
+        
+                <button class="insight-header" type="button"
+                    aria-expanded="false">
+        
+                    <span class="insight-number">01</span>
+                    <span class="insight-accent"></span>
+        
+                    <span class="insight-content">
+                        <h3>Progress Does Not Guarantee Universal Electricity Access</h3>
+                    </span>
+        
+                </button>
+        
+                <div class="insight-description">
+                    <div class="insight-description-inner">
+                        <p>
+                            The line chart shows sustained long-term growth in
+                            electricity access, particularly in the later years.
+                            However, only 57.6% of countries achieved 100% access
+                            across all areas. This indicates that global progress
+                            has not yet translated into universal access.
+                            Continued efforts should prioritize underserved
+                            communities and countries with remaining electricity
+                            access gaps.
+                        </p>
+                    </div>
+                </div>
+        
+            </div>
+        
+            <!-- INSIGHT 02 -->
+        
+            <div class="insight-item">
+        
+                <button class="insight-header" type="button"
+                    aria-expanded="false">
+        
+                    <span class="insight-number">02</span>
+                    <span class="insight-accent"></span>
+        
+                    <span class="insight-content">
+                        <h3>Clean Energy Progress Remains Uneven</h3>
+                    </span>
+        
+                </button>
+        
+                <div class="insight-description">
+                    <div class="insight-description-inner">
+                        <p>
+                            Fewer than half of countries meet the dashboard's
+                            benchmarks for renewable energy adoption and energy
+                            efficiency. Meanwhile, high renewable electricity-
+                            generating capacity per capita, as seen in Iceland
+                            and Norway, does not necessarily indicate universal
+                            or affordable electricity access. Countries should
+                            continue expanding clean-energy adoption, improving
+                            energy efficiency, and addressing gaps in electricity
+                            access.
+                        </p>
+                    </div>
+                </div>
+        
+            </div>
+        
+            <!-- INSIGHT 03 -->
+        
+            <div class="insight-item">
+        
+                <button class="insight-header" type="button"
+                    aria-expanded="false">
+        
+                    <span class="insight-number">03</span>
+                    <span class="insight-accent"></span>
+        
+                    <span class="insight-content">
+                        <h3>Financial Support Should Be Examined Alongside Energy Needs</h3>
+                    </span>
+        
+                </button>
+        
+                <div class="insight-description">
+                    <div class="insight-description-inner">
+                        <p>
+                            The clean-energy financial-flow chart identifies
+                            major funding recipients, while the electricity-
+                            access table highlights countries with substantial
+                            access gaps. Comparing these indicators can help
+                            identify where financial support and electrification
+                            needs may not align. Further assessment of funding
+                            allocation and country-level needs is necessary to
+                            help direct support toward underserved areas.
+                        </p>
+                    </div>
+                </div>
+        
+            </div>
+        
+        </div>
+
+        
+        /* INSIGHT ITEM */
         
         .insight-item {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 52px 3px 1fr;
-            align-items: stretch;
-            gap: 22px;
-            padding: 25px 0;
+            overflow: hidden;
         }
         
-        .insight-item:not(:last-child) {
-            border-bottom: 1px solid rgba(255,255,255,.15);
+        /* INSIGHT HEADER */
+        
+        .insight-header {
+            position: relative;
+            display: grid;
+            grid-template-columns: 52px 3px 1fr;
+            align-items: center;
+            gap: 22px;
+            width: 100%;
+            padding: 22px 30px;
+            border: none;
+            background: var(--mck-deep-blue);
+            color: white;
+            text-align: left;
+            cursor: pointer;
         }
+        
+        /* NUMBER CIRCLE */
         
         .insight-number {
             display: grid;
             place-items: center;
-            align-self: start;
             width: 46px;
             height: 46px;
             border: 1px solid #e5c84b;
@@ -1414,36 +1507,95 @@
             font-weight: 700;
         }
         
+        /* VERTICAL LINE */
+        
         .insight-accent {
+            position: relative;
+            display: block;
+            align-self: stretch;
+            min-height: 42px;
             width: 3px;
-            min-height: 100%;
-            background: #e5c84b;
+            background: rgba(255,255,255,.85);
+            overflow: hidden;
         }
+        
+        .insight-accent::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #e5c84b;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform .45s ease;
+        }
+        
+        /* INSIGHT TITLE */
         
         .insight-content h3 {
-            margin-bottom: 8px;
+            margin: 0;
             color: white;
             font-family: var(--font-serif);
-            font-size: 1.25rem;
-            line-height: 1.4;
+            font-size: 1.15rem;
+            line-height: 1.5;
         }
         
-        .insight-content p {
-            max-width: 750px;
-            color: #d1dce7;
-            font-size: .88rem;
-            line-height: 1.8;
+        /* PASTEL BLUE DESCRIPTION */
+        
+        .insight-description {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            background: #eaf3fa;
+            transition:
+                grid-template-rows .4s ease,
+                opacity .3s ease;
         }
+        
+        .insight-description-inner {
+            overflow: hidden;
+        }
+        
+        .insight-description p {
+            margin: 0;
+            padding: 0 35px;
+            color: #26394a;
+            font-size: .9rem;
+            line-height: 1.9;
+            text-align: justify;
+        }
+        
+        /* ACTIVE / HOVER STATES */
+        
+        .insight-item:hover .insight-accent::after,
+        .insight-item.active .insight-accent::after {
+            transform: scaleY(1);
+        }
+        
+        .insight-item:hover .insight-description,
+        .insight-item.active .insight-description {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+        
+        .insight-item:hover .insight-description p,
+        .insight-item.active .insight-description p {
+            padding: 22px 35px;
+        }
+        
+        /* KEYBOARD ACCESSIBILITY */
+        
+        .insight-header:focus-visible {
+            outline: 2px solid #e5c84b;
+            outline-offset: 3px;
+        }
+        
+        /* MOBILE */
         
         @media (max-width: 600px) {
-            .insights-panel {
-                padding: 15px 20px;
-            }
-        
-            .insight-item {
+            .insight-header {
                 grid-template-columns: 42px 3px 1fr;
                 gap: 13px;
-                padding: 22px 0;
+                padding: 18px 18px;
             }
         
             .insight-number {
@@ -1453,13 +1605,21 @@
             }
         
             .insight-content h3 {
-                font-size: 1.08rem;
+                font-size: 1rem;
             }
         
-            .insight-content p {
-                font-size: .8rem;
+            .insight-description p {
+                font-size: .82rem;
+                line-height: 1.8;
+                text-align: left;
+            }
+        
+            .insight-item:hover .insight-description p,
+            .insight-item.active .insight-description p {
+                padding: 18px 20px;
             }
         }
+
 
         /* FOOTER */
 
@@ -2506,6 +2666,30 @@
     <!-- PROCESS WORKFLOW AND IMAGE MODAL -->
     
     <script>
+
+        const insightItems = document.querySelectorAll(".insight-item");
+        
+        insightItems.forEach((item) => {
+            const header = item.querySelector(".insight-header");
+        
+            header.addEventListener("click", () => {
+                const isActive = item.classList.contains("active");
+        
+                insightItems.forEach((otherItem) => {
+                    otherItem.classList.remove("active");
+                    otherItem.querySelector(".insight-header")
+                        .setAttribute("aria-expanded", "false");
+                });
+        
+                if (!isActive) {
+                    item.classList.add("active");
+                    header.setAttribute("aria-expanded", "true");
+                }
+            });
+        });
+
+
+        
         const processCards = document.querySelectorAll(".process-card");
         const processFlow = document.getElementById("processFlow");
     
