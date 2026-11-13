@@ -1357,15 +1357,108 @@
             margin-top: 8px;
         }
 
-        /* REFLECTION */
-
-        .reflection {
-            max-width: 800px;
+        /* PROJECT INSIGHTS */
+        
+        .insights-section {
+            background: #fff;
         }
-
-        .reflection p {
-            color: var(--mck-text-muted);
-            margin-bottom: 18px;
+        
+        .insights-panel {
+            position: relative;
+            overflow: hidden;
+            margin-top: 35px;
+            padding: 25px 38px;
+            background: var(--mck-deep-blue);
+            color: white;
+        }
+        
+        .insights-panel::after {
+            content: "";
+            position: absolute;
+            right: -65px;
+            bottom: -100px;
+            width: 240px;
+            height: 240px;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 25px rgba(255,255,255,.025),
+                0 0 0 50px rgba(255,255,255,.02);
+            pointer-events: none;
+        }
+        
+        .insight-item {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 52px 3px 1fr;
+            align-items: stretch;
+            gap: 22px;
+            padding: 25px 0;
+        }
+        
+        .insight-item:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,.15);
+        }
+        
+        .insight-number {
+            display: grid;
+            place-items: center;
+            align-self: start;
+            width: 46px;
+            height: 46px;
+            border: 1px solid #e5c84b;
+            border-radius: 50%;
+            color: #e5c84b;
+            font-size: .78rem;
+            font-weight: 700;
+        }
+        
+        .insight-accent {
+            width: 3px;
+            min-height: 100%;
+            background: #e5c84b;
+        }
+        
+        .insight-content h3 {
+            margin-bottom: 8px;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+        
+        .insight-content p {
+            max-width: 750px;
+            color: #d1dce7;
+            font-size: .88rem;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 600px) {
+            .insights-panel {
+                padding: 15px 20px;
+            }
+        
+            .insight-item {
+                grid-template-columns: 42px 3px 1fr;
+                gap: 13px;
+                padding: 22px 0;
+            }
+        
+            .insight-number {
+                width: 38px;
+                height: 38px;
+                font-size: .7rem;
+            }
+        
+            .insight-content h3 {
+                font-size: 1.08rem;
+            }
+        
+            .insight-content p {
+                font-size: .8rem;
+            }
         }
 
         /* FOOTER */
@@ -2214,39 +2307,87 @@
         </div>
     </section>
 
-    <!-- KEY FINDINGS -->
-
-    <!-- PROJECT REFLECTION -->
-
-    <section class="reflection-section">
+    <!-- PROJECT INSIGHTS -->
+    
+    <section class="insights-section">
         <div class="container">
-
-                <p class="eyebrow">05 / Project Reflection</p>
-
-                <h2 class="section-title">
-                    Building an Analytical Perspective
-                </h2>
-
-                <p>
-                    This project strengthened my understanding of
-                    data preparation, transformation, modeling,
-                    and visualization using Microsoft Power BI.
-                </p>
-
-                <p>
-                    It also reinforced the importance of going beyond
-                    presenting information by interpreting patterns,
-                    understanding context, and communicating findings
-                    that can support informed decisions.
-                </p>
-
-                <p>
-                    The experience further developed my approach to
-                    analytical problem-solving and data storytelling.
-                </p>
-
+    
+            <p class="eyebrow">05 / Project Insights</p>
+    
+            <h2 class="section-title">
+                Key Insights from the Analysis
+            </h2>
+    
+            <p class="section-intro">
+                Three key findings drawn from the analysis of global
+                energy indicators, highlighting progress, differences,
+                and areas that require further attention.
+            </p>
+    
+            <div class="insights-panel">
+    
+                <!-- INSIGHT 01 -->
+    
+                <div class="insight-item">
+    
+                    <span class="insight-number">01</span>
+    
+                    <span class="insight-accent"></span>
+    
+                    <div class="insight-content">
+    
+                        <h3>Insight 01 — Progress Does Not Guarantee Universal Electricity Access</h3>
+    
+                        <p>
+                            The line chart shows sustained long-term growth in electricity access, particularly in the later years. However, only 57.6% of countries achieved 100% access across all areas. This indicates that global progress has not yet translated into universal access. Continued efforts should prioritize underserved communities and countries with remaining electricity access gaps.
+                        </p>
+    
+                    </div>
+    
+                </div>
+    
+                <!-- INSIGHT 02 -->
+    
+                <div class="insight-item">
+    
+                    <span class="insight-number">02</span>
+    
+                    <span class="insight-accent"></span>
+    
+                    <div class="insight-content">
+    
+                        <h3>Insight 02 — Clean Energy Progress Remains Uneven</h3>
+    
+                        <p>
+                           Fewer than half of countries meet the dashboard's benchmarks for renewable energy adoption and energy efficiency. Meanwhile, high renewable electricity-generating capacity per capita, as seen in Iceland and Norway, does not necessarily indicate universal or affordable electricity access. Countries should continue expanding clean-energy adoption, improving energy efficiency, and addressing gaps in electricity access.
+                        </p>
+    
+                    </div>
+    
+                </div>
+    
+                <!-- INSIGHT 03 -->
+    
+                <div class="insight-item">
+    
+                    <span class="insight-number">03</span>
+    
+                    <span class="insight-accent"></span>
+    
+                    <div class="insight-content">
+    
+                        <h3>Insight 03 — Financial Support Should Be Examined Alongside Energy Needs</h3>
+    
+                        <p>
+                            The clean-energy financial-flow chart identifies major funding recipients, while the electricity-access table highlights countries with substantial access gaps. Comparing these indicators can help identify where financial support and electrification needs may not align. Further assessment of funding allocation and country-level needs is necessary to help direct support toward underserved areas.
+                        </p>
+    
+                    </div>
+    
+                </div>
+    
             </div>
-
+    
         </div>
     </section>
     
