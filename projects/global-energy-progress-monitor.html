@@ -328,39 +328,342 @@
         }
 
         /* OVERVIEW */
-
-        .overview-grid {
+        /* INTERACTIVE PROJECT OVERVIEW */
+        
+        .overview-section {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+        }
+        
+        .overview-layout {
             display: grid;
-            grid-template-columns: 1.2fr .8fr;
+            grid-template-columns: 0.9fr 1.1fr;
             gap: 65px;
-            align-items: start;
+            align-items: center;
         }
-
-      .overview-text > p:not(.eyebrow) {
+        
+        .overview-text {
+            position: relative;
+        }
+        
+        .overview-text > p:not(.eyebrow) {
             color: var(--mck-text-muted);
             margin-bottom: 18px;
         }
-
-        .objectives {
-            background: var(--mck-bg-light);
-            padding: 30px;
-            border-left: 3px solid var(--mck-electric-blue);
+        
+        .overview-kicker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+            color: var(--mck-electric-blue);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
-
-        .objectives h3 {
-            font-family: var(--font-serif);
+        
+        .overview-kicker::before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--mck-electric-blue);
+        }
+        
+        /* OBJECTIVE EXPLORER */
+        
+        .objective-explorer {
+            min-width: 0;
+        }
+        
+        .objective-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 17px;
+        }
+        
+        .objective-heading span {
+            color: var(--mck-text-muted);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+        
+        .objective-count {
+            color: var(--mck-electric-blue) !important;
+            font-size: .8rem !important;
+            letter-spacing: 1px !important;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* OBJECTIVE SELECTOR */
+        
+        .objective-options {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .objective-option {
+            position: relative;
+            display: grid;
+            grid-template-columns: 48px 1fr 25px;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 17px 18px;
+            border: 1px solid #e3e8ed;
+            background: white;
+            text-align: left;
+            cursor: pointer;
+            transition: border-color .3s ease,
+                        background .3s ease,
+                        transform .3s ease,
+                        box-shadow .3s ease;
+        }
+        
+        .objective-option:hover {
+            border-color: #9bbbd5;
+            transform: translateX(4px);
+        }
+        
+        .objective-option.active {
+            border-color: var(--mck-electric-blue);
+            background: #edf4fa;
+            box-shadow: 0 5px 18px rgba(0, 50, 90, .07);
+        }
+        
+        .objective-option-number {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid #dce4ec;
+            border-radius: 50%;
+            color: var(--mck-electric-blue);
+            font-size: .78rem;
+            font-weight: 700;
+            transition: all .3s ease;
+        }
+        
+        .objective-option.active .objective-option-number {
+            background: var(--mck-deep-blue);
+            border-color: var(--mck-deep-blue);
+            color: white;
+        }
+        
+        .objective-option-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        
+        .objective-option-text strong {
             color: var(--mck-deep-blue);
-            font-size: 1.35rem;
-            margin-bottom: 18px;
+            font-size: .91rem;
+            font-weight: 700;
         }
-
-        .objectives ul {
-            padding-left: 20px;
+        
+        .objective-option-text span {
             color: var(--mck-text-muted);
+            font-size: .76rem;
         }
-
-        .objectives li {
-            margin-bottom: 12px;
+        
+        .objective-option-arrow {
+            color: #91a2b2;
+            font-size: 1.1rem;
+            transition: transform .3s ease, color .3s ease;
+        }
+        
+        .objective-option.active .objective-option-arrow {
+            color: var(--mck-electric-blue);
+            transform: translateX(3px);
+        }
+        
+        /* OBJECTIVE DETAIL PANEL */
+        
+        .objective-detail {
+            position: relative;
+            margin-top: 15px;
+            padding: 25px;
+            min-height: 225px;
+            overflow: hidden;
+            background: var(--mck-deep-blue);
+            color: white;
+            animation: objectiveReveal .35s ease;
+        }
+        
+        .objective-detail::after {
+            content: "";
+            position: absolute;
+            right: -45px;
+            bottom: -75px;
+            width: 190px;
+            height: 190px;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 50%;
+            box-shadow: 0 0 0 22px rgba(255,255,255,.025),
+                        0 0 0 45px rgba(255,255,255,.02);
+            pointer-events: none;
+        }
+        
+        .objective-detail-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+        
+        .objective-detail-label {
+            color: #9bc9eb;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        .objective-detail-index {
+            color: rgba(255,255,255,.55);
+            font-size: .75rem;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .objective-detail h3 {
+            position: relative;
+            z-index: 1;
+            max-width: 420px;
+            margin-bottom: 10px;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 1.55rem;
+            line-height: 1.3;
+        }
+        
+        .objective-detail p {
+            position: relative;
+            z-index: 1;
+            max-width: 460px;
+            color: #d1dce7;
+            font-size: .85rem;
+            line-height: 1.8;
+        }
+        
+        .objective-detail-bottom {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,.17);
+        }
+        
+        .objective-detail-bottom span {
+            color: #9bc9eb;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        
+        .objective-progress {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .objective-progress span {
+            width: 22px;
+            height: 3px;
+            background: rgba(255,255,255,.25);
+            transition: background .3s ease, width .3s ease;
+        }
+        
+        .objective-progress span.active {
+            width: 35px;
+            background: #75b6e5;
+        }
+        
+        @keyframes objectiveReveal {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+        
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* OVERVIEW RESPONSIVE */
+        
+        @media (max-width: 800px) {
+            .overview-layout {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        
+            .objective-explorer {
+                max-width: 650px;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .objective-option {
+                grid-template-columns: 42px 1fr 18px;
+                gap: 11px;
+                padding: 14px 12px;
+            }
+        
+            .objective-option-number {
+                width: 38px;
+                height: 38px;
+            }
+        
+            .objective-option-text strong {
+                font-size: .83rem;
+            }
+        
+            .objective-option-text span {
+                font-size: .7rem;
+            }
+        
+            .objective-detail {
+                padding: 21px;
+                min-height: 0;
+            }
+        
+            .objective-detail h3 {
+                font-size: 1.35rem;
+            }
+        }
+        
+        /* ACCESSIBILITY */
+        
+        .objective-option:focus-visible {
+            outline: 3px solid #75b6e5;
+            outline-offset: 3px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .objective-option,
+            .objective-option-number,
+            .objective-option-arrow,
+            .objective-progress span {
+                transition: none;
+            }
+        
+            .objective-detail {
+                animation: none;
+            }
         }
 
         /* INDICATORS */
@@ -1323,56 +1626,170 @@
 
     <!-- PROJECT OVERVIEW -->
 
-    <section>
+    <section class="overview-section" id="project-overview">
         <div class="container">
-
-            <div class="overview-grid">
-
+    
+            <div class="overview-layout">
+    
+                <!-- LEFT: PROJECT INTRODUCTION -->
+    
                 <div class="overview-text">
+    
                     <p class="eyebrow">02 / Project Overview</p>
-
+    
                     <h2 class="section-title">
                         Understanding the Energy Transition
                     </h2>
-
+    
                     <p>
                         Access to affordable and clean energy remains
                         an important factor in sustainable development.
                         Monitoring progress requires examining multiple
                         indicators across countries and time periods.
                     </p>
-
+    
                     <p>
                         This project consolidates energy-related indicators
                         into an interactive Power BI dashboard to explore
                         progress across electricity access, renewable
                         energy, energy efficiency, and financial support.
                     </p>
-
+    
                     <p>
                         The analysis aims to make complex information
                         easier to interpret through structured data,
                         meaningful comparisons, and effective visualization.
                     </p>
+    
+                    <div class="overview-kicker">
+                        Three Core Analytical Objectives
+                    </div>
+    
                 </div>
-
-                <div class="objectives">
-                    <h3>Project Objectives</h3>
-
-                    <ul>
-                        <li>Summarize five key SDG 7 indicators covering electricity access, 
-                            renewable energy, energy efficiency, clean energy financing, 
-                            and renewable energy capacity per capita..</li>
-                        <li>Track progress toward SDG 7 targets through interactive data visualizations.</li>
-                        <li>Translate analytical findings into meaningful 
-                            insights and data-driven recommendations.</li>
-                    </ul>
+    
+                <!-- RIGHT: INTERACTIVE OBJECTIVES -->
+    
+                <div class="objective-explorer" id="objectiveExplorer">
+    
+                    <div class="objective-heading">
+                        <span>Explore The Objectives</span>
+                        <span class="objective-count" id="objectiveCount">
+                            01 / 03
+                        </span>
+                    </div>
+    
+                    <div class="objective-options">
+    
+                        <button
+                            class="objective-option active"
+                            type="button"
+                            data-objective="0"
+                            aria-pressed="true"
+                        >
+                            <span class="objective-option-number">01</span>
+    
+                            <span class="objective-option-text">
+                                <strong>Consolidate Key Indicators</strong>
+                                <span>Bring multiple energy dimensions together.</span>
+                            </span>
+    
+                            <span class="objective-option-arrow">→</span>
+                        </button>
+    
+                        <button
+                            class="objective-option"
+                            type="button"
+                            data-objective="1"
+                            aria-pressed="false"
+                        >
+                            <span class="objective-option-number">02</span>
+    
+                            <span class="objective-option-text">
+                                <strong>Monitor Global Progress</strong>
+                                <span>Explore performance across countries and time.</span>
+                            </span>
+    
+                            <span class="objective-option-arrow">→</span>
+                        </button>
+    
+                        <button
+                            class="objective-option"
+                            type="button"
+                            data-objective="2"
+                            aria-pressed="false"
+                        >
+                            <span class="objective-option-number">03</span>
+    
+                            <span class="objective-option-text">
+                                <strong>Translate Data Into Insights</strong>
+                                <span>Make complex findings easier to interpret.</span>
+                            </span>
+    
+                            <span class="objective-option-arrow">→</span>
+                        </button>
+    
+                    </div>
+    
+                    <!-- DYNAMIC OBJECTIVE DETAIL -->
+    
+                    <div
+                        class="objective-detail"
+                        id="objectiveDetail"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    >
+    
+                        <div class="objective-detail-top">
+                            <span
+                                class="objective-detail-label"
+                                id="objectiveDetailLabel"
+                            >
+                                OBJECTIVE 01
+                            </span>
+    
+                            <span
+                                class="objective-detail-index"
+                                id="objectiveDetailIndex"
+                            >
+                                01 — 03
+                            </span>
+                        </div>
+    
+                        <h3 id="objectiveDetailTitle">
+                            Bring Five Energy Dimensions Together
+                        </h3>
+    
+                        <p id="objectiveDetailDescription">
+                            Consolidate indicators covering electricity
+                            access, renewable energy, energy efficiency,
+                            international financial flows, and installed
+                            renewable energy capacity per capita into
+                            one analytical dashboard.
+                        </p>
+    
+                        <div class="objective-detail-bottom">
+    
+                            <span id="objectiveDetailCategory">
+                                Data Consolidation
+                            </span>
+    
+                            <div class="objective-progress" id="objectiveProgress">
+                                <span class="active"></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
                 </div>
-
+    
             </div>
+    
         </div>
     </section>
-
+    
     <!-- SDG TARGET TIMELINE -->
     
     <section style="background: var(--mck-bg-light);">
@@ -2188,7 +2605,111 @@
             }
         
         });
+        
+        // INTERACTIVE PROJECT OBJECTIVES
+        
+        const objectiveOptions = document.querySelectorAll(".objective-option");
+        
+        const objectiveDetail = document.getElementById("objectiveDetail");
+        const objectiveCount = document.getElementById("objectiveCount");
+        
+        const objectiveDetailLabel = document.getElementById("objectiveDetailLabel");
+        const objectiveDetailIndex = document.getElementById("objectiveDetailIndex");
+        const objectiveDetailTitle = document.getElementById("objectiveDetailTitle");
+        const objectiveDetailDescription = document.getElementById("objectiveDetailDescription");
+        const objectiveDetailCategory = document.getElementById("objectiveDetailCategory");
+        
+        const objectiveProgress = document.querySelectorAll(".objective-progress span");
+        
+        // OBJECTIVE CONTENT
+        
+        const objectiveData = [
+            {
+                label: "OBJECTIVE 01",
+                title: "Bring Five Energy Dimensions Together",
+                description:
+                    "Consolidate indicators covering electricity access, renewable energy, energy efficiency, international financial flows, and installed renewable energy capacity per capita into one analytical dashboard.",
+                category: "Data Consolidation"
+            },
+            {
+                label: "OBJECTIVE 02",
+                title: "Explore Global Energy Progress",
+                description:
+                    "Use interactive visualizations and country-level comparisons to examine indicator performance and observe how energy-related measures change across the available reporting periods.",
+                category: "Progress Monitoring"
+            },
+            {
+                label: "OBJECTIVE 03",
+                title: "Make Complex Data Meaningful",
+                description:
+                    "Present analytical results through structured visuals and comparisons, making patterns easier to interpret and supporting the development of meaningful insights and data-driven recommendations.",
+                category: "Insight Generation"
+            }
+        ];
+        
+        // ACTIVATE SELECTED OBJECTIVE
+        
+        function activateObjective(index) {
+        
+            const selected = objectiveData[index];
+        
+            if (!selected) return;
+        
+            // Update selected objective button
+        
+            objectiveOptions.forEach((option, i) => {
+        
+                const isActive = i === index;
+        
+                option.classList.toggle("active", isActive);
+        
+                option.setAttribute(
+                    "aria-pressed",
+                    isActive ? "true" : "false"
+                );
+        
+            });
+        
+            // Update objective counter
+        
+            const formattedIndex = String(index + 1).padStart(2, "0");
+        
+            objectiveCount.textContent = `${formattedIndex} / 03`;
+        
+            objectiveDetailIndex.textContent = `${formattedIndex} — 03`;
+        
+            // Update detail panel content
+        
+            objectiveDetailLabel.textContent = selected.label;
+            objectiveDetailTitle.textContent = selected.title;
+            objectiveDetailDescription.textContent = selected.description;
+            objectiveDetailCategory.textContent = selected.category;
+        
+            // Update progress indicators
+        
+            objectiveProgress.forEach((bar, i) => {
+                bar.classList.toggle("active", i <= index);
+            });
+        
+            // Replay the reveal animation
+        
+            objectiveDetail.style.animation = "none";
+        
+            void objectiveDetail.offsetWidth;
+        
+            objectiveDetail.style.animation = "";
+        
+        }
+        
+        // OBJECTIVE BUTTON EVENTS
+        
+        objectiveOptions.forEach((option, index) => {
+        
+            option.addEventListener("click", () => {
+                activateObjective(index);
+            });
 
+});
     </script>
 
 </body>
