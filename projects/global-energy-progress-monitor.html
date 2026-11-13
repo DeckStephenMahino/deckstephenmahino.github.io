@@ -1319,43 +1319,69 @@
             font-size: .9rem;
         }
 
+  
         /* RECOGNITION */
-
+        
         .recognition-section {
             background: var(--mck-bg-light);
         }
-
+        
         .recognition-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1fr;
+            max-width: 850px;
+            margin: 0 auto;
         }
-
+        
         .award-card {
             background: white;
             border: 1px solid #e1e5e9;
-            padding: 18px;
+            padding: 25px;
         }
-
-        .award-card img {
+        
+        .award-certificate {
             width: 100%;
-            max-height: 370px;
-            object-fit: contain;
-            background: white;
+            height: 520px;
+            border: 1px solid #e1e5e9;
+            background: #fff;
         }
-
+        
         .award-card h3 {
             color: var(--mck-deep-blue);
             font-family: var(--font-serif);
             font-size: 1.15rem;
-            margin-top: 18px;
+            margin-top: 20px;
         }
-
+        
         .award-card p {
             color: var(--mck-text-muted);
             font-size: .85rem;
             margin-top: 8px;
         }
+        
+        .award-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--mck-electric-blue);
+            font-size: .82rem;
+            font-weight: 700;
+        }
+        
+        .award-link:hover {
+            color: var(--mck-deep-blue);
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .award-card {
+                padding: 15px;
+            }
+        
+            .award-certificate {
+                height: 400px;
+            }
+        }
+
 
 
         /* PROJECT INSIGHTS */
@@ -2533,57 +2559,54 @@
         </div>
     </section>
 
-    
     <!-- RECOGNITION -->
-
+    
     <section class="recognition-section">
         <div class="container">
-
+    
             <p class="eyebrow">06 / Recognition</p>
-
+    
             <h2 class="section-title">Recognizing Analytical Excellence</h2>
-
+    
             <p class="section-intro">
                 Recognition received through the DataSense Analytics
                 Power BI Masterclass and related professional learning.
             </p>
-
+    
             <div class="recognition-grid">
-
+    
                 <div class="award-card">
-                    <img
-                        src="../assets/images/global-energy-award.png"
-                        alt="Outstanding Dashboard Project award certificate"
+    
+                    <iframe
+                        class="award-certificate"
+                        src="../projects/cert.pdf"
+                        title="Certificate of Recognition"
                         loading="lazy"
-                    >
-
-                    <h3>Outstanding Dashboard Project – Emerging Analytics Talent</h3>
-
+                    ></iframe>
+    
+                    <h3>Certificate of Recognition</h3>
+    
                     <p>
-                        Recognition received for the Global Energy
-                        Progress Monitor project through DataSense Analytics.
+                        Recognition for achievement in the Global Energy
+                        Progress Monitor project and analytical work.
                     </p>
-                </div>
-
-                <div class="award-card">
-                    <img
-                        src="../assets/images/strategic-data-insights-award.png"
-                        alt="Strategic Data Insights Certificate of Excellence"
-                        loading="lazy"
+    
+                    <a
+                        class="award-link"
+                        href="../projects/cert.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-
-                    <h3>Strategic Data Insights</h3>
-
-                    <p>
-                        Certificate of Excellence recognizing achievement
-                        in the Microsoft Power BI Data Analyst Professional Certificate.
-                    </p>
+                        View Full Certificate →
+                    </a>
+    
                 </div>
-
+    
             </div>
-
+    
         </div>
     </section>
+
 
 </main>
 
