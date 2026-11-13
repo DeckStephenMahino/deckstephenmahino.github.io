@@ -1364,113 +1364,12 @@
             background: #fff;
         }
         
-               
-        <div class="insights-panel">
+        .insights-panel {
+            display: grid;
+            gap: 12px;
+        }
         
-            <!-- INSIGHT 01 -->
-        
-            <div class="insight-item">
-        
-                <button class="insight-header" type="button"
-                    aria-expanded="false">
-        
-                    <span class="insight-number">01</span>
-                    <span class="insight-accent"></span>
-        
-                    <span class="insight-content">
-                        <h3>Progress Does Not Guarantee Universal Electricity Access</h3>
-                    </span>
-        
-                </button>
-        
-                <div class="insight-description">
-                    <div class="insight-description-inner">
-                        <p>
-                            The line chart shows sustained long-term growth in
-                            electricity access, particularly in the later years.
-                            However, only 57.6% of countries achieved 100% access
-                            across all areas. This indicates that global progress
-                            has not yet translated into universal access.
-                            Continued efforts should prioritize underserved
-                            communities and countries with remaining electricity
-                            access gaps.
-                        </p>
-                    </div>
-                </div>
-        
-            </div>
-        
-            <!-- INSIGHT 02 -->
-        
-            <div class="insight-item">
-        
-                <button class="insight-header" type="button"
-                    aria-expanded="false">
-        
-                    <span class="insight-number">02</span>
-                    <span class="insight-accent"></span>
-        
-                    <span class="insight-content">
-                        <h3>Clean Energy Progress Remains Uneven</h3>
-                    </span>
-        
-                </button>
-        
-                <div class="insight-description">
-                    <div class="insight-description-inner">
-                        <p>
-                            Fewer than half of countries meet the dashboard's
-                            benchmarks for renewable energy adoption and energy
-                            efficiency. Meanwhile, high renewable electricity-
-                            generating capacity per capita, as seen in Iceland
-                            and Norway, does not necessarily indicate universal
-                            or affordable electricity access. Countries should
-                            continue expanding clean-energy adoption, improving
-                            energy efficiency, and addressing gaps in electricity
-                            access.
-                        </p>
-                    </div>
-                </div>
-        
-            </div>
-        
-            <!-- INSIGHT 03 -->
-        
-            <div class="insight-item">
-        
-                <button class="insight-header" type="button"
-                    aria-expanded="false">
-        
-                    <span class="insight-number">03</span>
-                    <span class="insight-accent"></span>
-        
-                    <span class="insight-content">
-                        <h3>Financial Support Should Be Examined Alongside Energy Needs</h3>
-                    </span>
-        
-                </button>
-        
-                <div class="insight-description">
-                    <div class="insight-description-inner">
-                        <p>
-                            The clean-energy financial-flow chart identifies
-                            major funding recipients, while the electricity-
-                            access table highlights countries with substantial
-                            access gaps. Comparing these indicators can help
-                            identify where financial support and electrification
-                            needs may not align. Further assessment of funding
-                            allocation and country-level needs is necessary to
-                            help direct support toward underserved areas.
-                        </p>
-                    </div>
-                </div>
-        
-            </div>
-        
-        </div>
-
-        
-        /* INSIGHT ITEM */
+        /* INDIVIDUAL INSIGHT */
         
         .insight-item {
             overflow: hidden;
@@ -1486,11 +1385,18 @@
             gap: 22px;
             width: 100%;
             padding: 22px 30px;
-            border: none;
-            background: var(--mck-deep-blue);
-            color: white;
+            border: 1px solid #e3e8ed;
+            background: #fff;
             text-align: left;
             cursor: pointer;
+            transition: background .3s ease,
+                        border-color .3s ease;
+        }
+        
+        .insight-header:hover,
+        .insight-item.active .insight-header {
+            background: #f8fafc;
+            border-color: #cbdbea;
         }
         
         /* NUMBER CIRCLE */
@@ -1500,14 +1406,23 @@
             place-items: center;
             width: 46px;
             height: 46px;
-            border: 1px solid #e5c84b;
+            border: 1px solid #d6e0e9;
             border-radius: 50%;
-            color: #e5c84b;
+            background: white;
+            color: var(--mck-electric-blue);
             font-size: .78rem;
             font-weight: 700;
+            transition: all .3s ease;
         }
         
-        /* VERTICAL LINE */
+        .insight-item:hover .insight-number,
+        .insight-item.active .insight-number {
+            border-color: var(--mck-electric-blue);
+            background: var(--mck-electric-blue);
+            color: white;
+        }
+        
+        /* VERTICAL ACCENT LINE */
         
         .insight-accent {
             position: relative;
@@ -1515,7 +1430,7 @@
             align-self: stretch;
             min-height: 42px;
             width: 3px;
-            background: rgba(255,255,255,.85);
+            background: #e1e6eb;
             overflow: hidden;
         }
         
@@ -1531,40 +1446,46 @@
         
         /* INSIGHT TITLE */
         
+        .insight-content {
+            min-width: 0;
+        }
+        
         .insight-content h3 {
             margin: 0;
-            color: white;
+            color: var(--mck-deep-blue);
             font-family: var(--font-serif);
             font-size: 1.15rem;
+            font-weight: 700;
             line-height: 1.5;
         }
         
-        /* PASTEL BLUE DESCRIPTION */
+        /* DESCRIPTION PANEL */
         
         .insight-description {
             display: grid;
             grid-template-rows: 0fr;
             opacity: 0;
             background: #eaf3fa;
-            transition:
-                grid-template-rows .4s ease,
-                opacity .3s ease;
+            transition: grid-template-rows .4s ease,
+                        opacity .3s ease;
         }
         
         .insight-description-inner {
+            min-height: 0;
             overflow: hidden;
         }
         
         .insight-description p {
             margin: 0;
             padding: 0 35px;
-            color: #26394a;
+            color: #35495c;
             font-size: .9rem;
             line-height: 1.9;
             text-align: justify;
+            transition: padding .3s ease;
         }
         
-        /* ACTIVE / HOVER STATES */
+        /* HOVER AND ACTIVE STATES */
         
         .insight-item:hover .insight-accent::after,
         .insight-item.active .insight-accent::after {
@@ -1585,7 +1506,7 @@
         /* KEYBOARD ACCESSIBILITY */
         
         .insight-header:focus-visible {
-            outline: 2px solid #e5c84b;
+            outline: 2px solid var(--mck-electric-blue);
             outline-offset: 3px;
         }
         
@@ -1595,7 +1516,7 @@
             .insight-header {
                 grid-template-columns: 42px 3px 1fr;
                 gap: 13px;
-                padding: 18px 18px;
+                padding: 18px;
             }
         
             .insight-number {
@@ -1611,7 +1532,7 @@
             .insight-description p {
                 font-size: .82rem;
                 line-height: 1.8;
-                text-align: left;
+                text-align: justify;
             }
         
             .insight-item:hover .insight-description p,
@@ -1619,6 +1540,17 @@
                 padding: 18px 20px;
             }
         }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .insight-header,
+            .insight-number,
+            .insight-accent::after,
+            .insight-description,
+            .insight-description p {
+                transition: none;
+            }
+        }
+
 
 
         /* FOOTER */
@@ -2467,6 +2399,7 @@
         </div>
     </section>
 
+
     <!-- PROJECT INSIGHTS -->
     
     <section class="insights-section">
@@ -2490,18 +2423,34 @@
     
                 <div class="insight-item">
     
-                    <span class="insight-number">01</span>
+                    <button class="insight-header" type="button"
+                        aria-expanded="false">
     
-                    <span class="insight-accent"></span>
+                        <span class="insight-number">01</span>
     
-                    <div class="insight-content">
+                        <span class="insight-accent"></span>
     
-                        <h3>Insight 01 — Progress Does Not Guarantee Universal Electricity Access</h3>
+                        <span class="insight-content">
+                            <h3>
+                                Progress Does Not Guarantee Universal Electricity Access
+                            </h3>
+                        </span>
     
-                        <p>
-                            The line chart shows sustained long-term growth in electricity access, particularly in the later years. However, only 57.6% of countries achieved 100% access across all areas. This indicates that global progress has not yet translated into universal access. Continued efforts should prioritize underserved communities and countries with remaining electricity access gaps.
-                        </p>
+                    </button>
     
+                    <div class="insight-description">
+                        <div class="insight-description-inner">
+                            <p>
+                                The line chart shows sustained long-term growth in
+                                electricity access, particularly in the later years.
+                                However, only 57.6% of countries achieved 100% access
+                                across all areas. This indicates that global progress
+                                has not yet translated into universal access.
+                                Continued efforts should prioritize underserved
+                                communities and countries with remaining electricity
+                                access gaps.
+                            </p>
+                        </div>
                     </div>
     
                 </div>
@@ -2510,18 +2459,35 @@
     
                 <div class="insight-item">
     
-                    <span class="insight-number">02</span>
+                    <button class="insight-header" type="button"
+                        aria-expanded="false">
     
-                    <span class="insight-accent"></span>
+                        <span class="insight-number">02</span>
     
-                    <div class="insight-content">
+                        <span class="insight-accent"></span>
     
-                        <h3>Insight 02 — Clean Energy Progress Remains Uneven</h3>
+                        <span class="insight-content">
+                            <h3>
+                                Clean Energy Progress Remains Uneven
+                            </h3>
+                        </span>
     
-                        <p>
-                           Fewer than half of countries meet the dashboard's benchmarks for renewable energy adoption and energy efficiency. Meanwhile, high renewable electricity-generating capacity per capita, as seen in Iceland and Norway, does not necessarily indicate universal or affordable electricity access. Countries should continue expanding clean-energy adoption, improving energy efficiency, and addressing gaps in electricity access.
-                        </p>
+                    </button>
     
+                    <div class="insight-description">
+                        <div class="insight-description-inner">
+                            <p>
+                                Fewer than half of countries meet the dashboard's
+                                benchmarks for renewable energy adoption and energy
+                                efficiency. Meanwhile, high renewable electricity-
+                                generating capacity per capita, as seen in Iceland
+                                and Norway, does not necessarily indicate universal
+                                or affordable electricity access. Countries should
+                                continue expanding clean-energy adoption, improving
+                                energy efficiency, and addressing gaps in electricity
+                                access.
+                            </p>
+                        </div>
                     </div>
     
                 </div>
@@ -2530,18 +2496,34 @@
     
                 <div class="insight-item">
     
-                    <span class="insight-number">03</span>
+                    <button class="insight-header" type="button"
+                        aria-expanded="false">
     
-                    <span class="insight-accent"></span>
+                        <span class="insight-number">03</span>
     
-                    <div class="insight-content">
+                        <span class="insight-accent"></span>
     
-                        <h3>Insight 03 — Financial Support Should Be Examined Alongside Energy Needs</h3>
+                        <span class="insight-content">
+                            <h3>
+                                Financial Support Should Be Examined Alongside Energy Needs
+                            </h3>
+                        </span>
     
-                        <p>
-                            The clean-energy financial-flow chart identifies major funding recipients, while the electricity-access table highlights countries with substantial access gaps. Comparing these indicators can help identify where financial support and electrification needs may not align. Further assessment of funding allocation and country-level needs is necessary to help direct support toward underserved areas.
-                        </p>
+                    </button>
     
+                    <div class="insight-description">
+                        <div class="insight-description-inner">
+                            <p>
+                                The clean-energy financial-flow chart identifies
+                                major funding recipients, while the electricity-
+                                access table highlights countries with substantial
+                                access gaps. Comparing these indicators can help
+                                identify where financial support and electrification
+                                needs may not align. Further assessment of funding
+                                allocation and country-level needs is necessary to
+                                help direct support toward underserved areas.
+                            </p>
+                        </div>
                     </div>
     
                 </div>
@@ -2550,6 +2532,7 @@
     
         </div>
     </section>
+
     
     <!-- RECOGNITION -->
 
@@ -2667,26 +2650,42 @@
     
     <script>
 
+               
+        // PROJECT INSIGHTS INTERACTION
+        
         const insightItems = document.querySelectorAll(".insight-item");
         
         insightItems.forEach((item) => {
+        
             const header = item.querySelector(".insight-header");
         
             header.addEventListener("click", () => {
+        
                 const isActive = item.classList.contains("active");
         
+                // Close all other insights
                 insightItems.forEach((otherItem) => {
+        
                     otherItem.classList.remove("active");
+        
                     otherItem.querySelector(".insight-header")
                         .setAttribute("aria-expanded", "false");
+        
                 });
         
+                // Toggle the selected insight
                 if (!isActive) {
+        
                     item.classList.add("active");
+        
                     header.setAttribute("aria-expanded", "true");
+        
                 }
+        
             });
+        
         });
+        
 
 
         
